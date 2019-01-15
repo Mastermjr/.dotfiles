@@ -89,3 +89,4 @@ source $ZSH/oh-my-zsh.sh
 ### other aliases ####
 setxkbmap -option caps:swapescape
 alias 1920="xrandr --output eDP1 --mode 1920x1080"
+alias zsh-source="source ~/.zshrc"
