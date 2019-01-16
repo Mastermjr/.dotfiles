@@ -24,10 +24,10 @@ function confirm () {
   do
     read -p "Are you sure you wish to install: $1 [Y/N]? " in </dev/tty
     case "$in" in 
-      [yY][eE][sS[yY])
+      [yY])
         return
         ;;
-      [nN][oO][nN])
+      [nN])
         exit
         ;;
        *)
@@ -56,11 +56,6 @@ function package () {
     confirm "$repo_url"
     echo "$expected_repo: Installing..."
     git clone -q "$repo_url"
-    sub_mod_dir=$(pwd)
-    #add submodule to repo
-    cd ~/.dotfiles/
-    echo $sub_mod_dir
-    git submodule add $repo_url $sub_mod_dir/$expected_repo  
   fi
 }
 
