@@ -90,3 +90,7 @@ source $ZSH/oh-my-zsh.sh
 setxkbmap -option caps:swapescape
 alias 1920="xrandr --output eDP1 --mode 1920x1080"
 alias zsh-source="source ~/.zshrc"
+alias edit-zsh="vim ~/.zshrc"
+
+# easily edit configs #
+alias add-vim-plug="vim ~/.dotfiles/vim/pack/install.sh +65;curr_dir=$(pwd);cd ~/.dotfiles/vim/pack; ./install.sh; cd $pwd" #auto jump to group lines

@@ -59,6 +59,9 @@ function package () {
   fi
 }
 
+# ( executes a subshell
+#SETGROUPS
+
 
 ( 
 set_group python
@@ -66,13 +69,19 @@ package https://github.com/davidhalter/jedi-vim &
 wait
 ) &
 
-#( 
-#set_group syntax
+( 
+set_group syntax
+package https://github.com/tpope/vim-surround
 #package https://github.com/kchmck/vim-coffee-script.git &
 #package https://github.com/tpope/vim-markdown.git &
 #package https://github.com/ap/vim-css-color.git &
 #wait
-#) &
+) &
+
+(
+set_group utility
+package https://github.com/scrooloose/nerdtree
+) &
 
 
 #(
@@ -81,4 +90,5 @@ wait
 #wait
 #) &
 
+#waits until all subshells done
 wait

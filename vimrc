@@ -86,3 +86,6 @@ set relativenumber
 set backupdir=~/.vim/tmp,.
 set directory=~/.vim/tmp,.
 set undodir=~/.vim/undo
+
+" add nerd tree key
+map <C-n> :NERDTreeToggle<CR>
