@@ -13,3 +13,4 @@ ln -s $BASE/zshrc ~/.zshrc
 #tmux
 ln -s $BASE/tmux.conf ~/.tmux.conf
 
+

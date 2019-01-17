@@ -31,3 +31,10 @@ for x in $(find . -type d) ; do
         git submodule add "${origin}" "${x}"
     fi
 done
+
+#check to see if tmp && undo
+if [ -d tmp ] && [ -d undo ];
+  then
+  mkdir tmp; 
+  mkdir undo;
+fi

@@ -9,7 +9,7 @@ export ZSH=/home/$USER/.dotfiles/oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #bira,amuse,candy,dpoggi,gnzh,xiong-chiamiov-plus,ys
-ZSH_THEME="mikey_theme"
+ZSH_THEME="bira"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
