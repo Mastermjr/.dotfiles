@@ -5,6 +5,7 @@ Syncing my Dotfiles
 
 ## fun submodule commands:
   `'FolderName' already exists in the index` 
+
   git ls-files --stage
   git rm -r --cached [file path
 
