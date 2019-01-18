@@ -18,8 +18,8 @@ cd oh-my-zsh/
 ln -s $BASE/custom-oh-my-zsh/mikey_theme.zsh-theme custom/themes/mikey_theme.zsh-theme
 
 #add in .local_aliases file
-if [ -f ~/.local_aliases ]; then
+if [ -f ~/.local_alias ]; then
   exit
 else
-  touch .local_alisases
+  touch .local_alias
 fi
