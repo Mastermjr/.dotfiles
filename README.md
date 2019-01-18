@@ -1,4 +1,4 @@
 # .dotfiles
 Syncing my Dotfiles
 
-**git clone --recurse-submodules** git@github.com:Mastermjr/.dotfiles.git
+**git clone --recurse-submodules** https://github.com/Mastermjr/.dotfiles.git
