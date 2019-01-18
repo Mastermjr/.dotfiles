@@ -7,8 +7,10 @@ Syncing my Dotfiles
   `'FolderName' already exists in the index` 
 
   git ls-files --stage
+
   git rm -r --cached [file path
 
 ## update submodules
   git submodule foreach git pull origin BRANCH
+
   git submodule update
