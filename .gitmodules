@@ -7,3 +7,6 @@
 [submodule "vim/pack/syntax/start/vim-surround"]
 	path = vim/pack/syntax/start/vim-surround
 	url = https://github.com/tpope/vim-surround
+[submodule "vim/pack/utility/start/nerdtree"]
+	path = vim/pack/utility/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree

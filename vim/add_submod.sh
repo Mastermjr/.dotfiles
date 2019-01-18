@@ -33,7 +33,7 @@ for x in $(find . -type d) ; do
 done
 
 #check to see if tmp && undo
-if [ -d tmp ] && [ -d undo ];
+if [ ! -d tmp ] && [ ! -d undo ];
   then
   mkdir tmp; 
   mkdir undo;
