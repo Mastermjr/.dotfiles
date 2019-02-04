@@ -17,7 +17,6 @@ ln -sn $BASE/vim/ ~/.vim
     fi
 
 #zsh
-
 ln -s $BASE/zshrc ~/.zshrc
 
 #tmux
@@ -33,3 +32,6 @@ if [ -f ~/.local_alias ]; then
 else
   touch .local_alias
 fi
+
+#submodules update
+git submodule foreach git checkout master; git pull origin master;
