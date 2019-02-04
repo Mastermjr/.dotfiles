@@ -18,6 +18,6 @@ chsh -s /bin/zsh
   git rm -r --cached [file path
 
 ## update submodules
-  git submodule foreach git pull origin BRANCH
+  git submodule foreach git pull origin [master||BRANCH]
 
   git submodule update
