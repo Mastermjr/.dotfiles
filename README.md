@@ -3,9 +3,9 @@ Syncing my Dotfiles
 
 **git clone --recurse-submodules** https://github.com/Mastermjr/.dotfiles.git  
 
-##After Clone:
+## After Clone:
 **git submodule update --init**  
-###Update ZSH:
+### Update ZSH:
 ```shell
 chsh -s /bin/zsh
 ```
