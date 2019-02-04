@@ -5,10 +5,10 @@ Syncing my Dotfiles
 **git clone --recurse-submodules** git@github.com:Mastermjr/.dotfiles.git
 
 ## After Clone:
-**git submodule update --init**  
 ```shell
 chsh -s /bin/zsh
 ```
+./sync.sh
 
 ## fun submodule commands:
   `'FolderName' already exists in the index` 
@@ -19,5 +19,4 @@ chsh -s /bin/zsh
 
 ## update submodules
   git submodule foreach git pull origin [master||BRANCH]
-
   git submodule update
