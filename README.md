@@ -5,7 +5,6 @@ Syncing my Dotfiles
 
 ## After Clone:
 **git submodule update --init**  
-### Update ZSH:
 ```shell
 chsh -s /bin/zsh
 ```
