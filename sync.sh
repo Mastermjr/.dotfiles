@@ -7,6 +7,15 @@ BASE=~/.dotfiles
 ln -s $BASE/vimrc ~/.vimrc
 ln -sn $BASE/vim/ ~/.vim
 #make vim dirs
+if [ -f ~/.viminfo ];
+  then
+  cp ~/.viminfo $BASE/vim/.viminfo
+  rm ~/.viminfo
+  ln -sn $BASE/vim/.viminfo ~/.viminfo
+  else
+  ln -sn $BASE/vim/.viminfo ~/.viminfo
+  fi
+
   if [ ! -d vim/undo/ ];
     then
       mkdir vim/undo/
