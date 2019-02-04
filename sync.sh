@@ -6,8 +6,18 @@ BASE=~/.dotfiles
 #vim
 ln -s $BASE/vimrc ~/.vimrc
 ln -sn $BASE/vim/ ~/.vim
+#make vim dirs
+  if [ ! -d vim/undo/ ];
+    then
+      mkdir vim/undo/
+    fi
+  if [ ! -d vim/tmp/ ];
+    then
+      mkdir vim/tmp/
+    fi
 
 #zsh
+
 ln -s $BASE/zshrc ~/.zshrc
 
 #tmux
