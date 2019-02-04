@@ -2,8 +2,13 @@
 Syncing my Dotfiles
 
 **git clone --recurse-submodules** https://github.com/Mastermjr/.dotfiles.git  
-After Clone:
-**git submodule update --init**
+
+##After Clone:
+**git submodule update --init**  
+###Update ZSH:
+```shell
+chsh -s /bin/zsh
+```
 
 ## fun submodule commands:
   `'FolderName' already exists in the index` 
