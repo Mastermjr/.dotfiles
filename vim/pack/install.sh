@@ -50,7 +50,7 @@ function package () {
   expected_repo=$(basename "$repo_url" .git)
   if [ -d "$expected_repo" ]; then
     cd "$expected_repo" || exit
-    result=$(git pull ) #may need --force
+    result=$(git pull --force ) #may need --force
     echo "$expected_repo: $result"
   else
     confirm "$repo_url"
