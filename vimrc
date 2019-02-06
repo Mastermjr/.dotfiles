@@ -91,3 +91,7 @@ set viminfo+=n~/.vim/viminfo
 " add nerd tree key
 map <C-n> :NERDTreeToggle<CR>
 
+" spelling remaps
+nnoremap Ss :set spell spelllang=en_us<CR>
+nnoremap ss :set nospell<CR>
+nnoremap  zz z=
