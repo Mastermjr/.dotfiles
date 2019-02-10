@@ -10,3 +10,6 @@
 [submodule "vim/pack/utility/start/nerdtree"]
 	path = vim/pack/utility/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree
+[submodule "vim/pack/utility/start/vimtex"]
+	path = vim/pack/utility/start/vimtex
+	url = https://github.com/lervag/vimtex

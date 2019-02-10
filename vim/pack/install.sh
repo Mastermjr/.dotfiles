@@ -75,12 +75,14 @@ package https://github.com/tpope/vim-surround
 #package https://github.com/kchmck/vim-coffee-script.git &
 #package https://github.com/tpope/vim-markdown.git &
 #package https://github.com/ap/vim-css-color.git &
-#wait
+wait
 ) &
 
 (
 set_group utility
-package https://github.com/scrooloose/nerdtree
+package https://github.com/scrooloose/nerdtree &
+package https://github.com/lervag/vimtex &
+wait
 ) &
 
 

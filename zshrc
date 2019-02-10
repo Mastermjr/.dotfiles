@@ -97,4 +97,4 @@ alias zsh-history-fix="mv .zsh_history .zsh_history_bad; strings .zsh_history_ba
 source ~/.dotfiles/linux_sync/.local_alias 
 
 # easily edit configs #
-alias add-vim-plug="vim ~/.dotfiles/vim/pack/install.sh +65;curr_dir=$(pwd);cd ~/.dotfiles/vim/pack; ./install.sh; cd $pwd" #auto jump to group lines
+alias add-vim-plug="vim ~/.dotfiles/vim/pack/install.sh +65;curr_dir=$(pwd);cd ~/.dotfiles/vim/pack; ./install.sh; cd ~/.dotfiles/vim/; ./add_submod.sh; cd $curr_dir" #auto jump to group lines
