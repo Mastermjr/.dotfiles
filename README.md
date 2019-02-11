@@ -20,3 +20,5 @@ chsh -s /bin/zsh
 ## update submodules
   git submodule foreach git pull origin [master||BRANCH]
   git submodule update
+## ignore changes
+  Add `ignore = dirty` to each problematic `submodule` section in `.gitmodules` files placed at root of repo. Example:

@@ -6,6 +6,7 @@ BASE=~/.dotfiles
 #vim
 ln -s $BASE/vimrc ~/.vimrc
 ln -sn $BASE/vim/ ~/.vim
+
 #make vim dirs
 if [ -f ~/.viminfo ];
   then
@@ -24,6 +25,8 @@ if [ -f ~/.viminfo ];
     then
       mkdir vim/tmp/
     fi
+#generate helptags
+vim -c ":helptags ~/.dotfiles/vim/pack/" -c q
 
 #zsh
 ln -s $BASE/zshrc ~/.zshrc

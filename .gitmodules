@@ -4,6 +4,7 @@
 [submodule "vim/pack/python/start/jedi-vim"]
 	path = vim/pack/python/start/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim
+  ignore = dirty
 [submodule "vim/pack/syntax/start/vim-surround"]
 	path = vim/pack/syntax/start/vim-surround
 	url = https://github.com/tpope/vim-surround
@@ -13,3 +14,6 @@
 [submodule "vim/pack/utility/start/vimtex"]
 	path = vim/pack/utility/start/vimtex
 	url = https://github.com/lervag/vimtex
+[submodule "vim/pack/syntax/start/syntastic"]
+	path = vim/pack/syntax/start/syntastic
+	url = https://github.com/vim-syntastic/syntastic

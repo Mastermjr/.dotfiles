@@ -71,7 +71,8 @@ wait
 
 ( 
 set_group syntax
-package https://github.com/tpope/vim-surround
+package https://github.com/tpope/vim-surround &
+package https://github.com/vim-syntastic/syntastic & 
 #package https://github.com/kchmck/vim-coffee-script.git &
 #package https://github.com/tpope/vim-markdown.git &
 #package https://github.com/ap/vim-css-color.git &
