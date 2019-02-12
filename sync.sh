@@ -10,21 +10,21 @@ ln -sn $BASE/vim/ ~/.vim
 #make vim dirs
 if [ -f ~/.viminfo ];
   then
-  cp ~/.viminfo $BASE/vim/.viminfo
+  cp ~/.viminfo $BASE/vim/viminfo
   rm ~/.viminfo
-  ln -sn $BASE/vim/.viminfo ~/.viminfo
+  ln -sn $BASE/vim/viminfo ~/.viminfo
   else
-  ln -sn $BASE/vim/.viminfo ~/.viminfo
-  fi
+  ln -sn $BASE/vim/viminfo ~/.viminfo
+fi
 
-  if [ ! -d vim/undo/ ];
-    then
-      mkdir vim/undo/
-    fi
-  if [ ! -d vim/tmp/ ];
-    then
-      mkdir vim/tmp/
-    fi
+if [ ! -d vim/undo/ ];
+  then
+    mkdir vim/undo/
+fi
+if [ ! -d vim/tmp/ ];
+  then
+    mkdir vim/tmp/
+fi
 #generate helptags
 vim -c ":helptags ~/.dotfiles/vim/pack/" -c q
 
