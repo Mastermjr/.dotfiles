@@ -88,6 +88,11 @@ set directory=~/.vim/tmp,.
 set undodir=~/.vim/undo
 set viminfo+=n~/.vim/viminfo
 
+"folding on syntax
+"if folding slow
+"https://github.com/Konfekt/FastFold
+set foldmethod=syntax
+
 " add nerd tree key
 map <C-n> :NERDTreeToggle<CR>
 
@@ -106,4 +111,5 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-"helptags
+"vimtex
+let g:vimtex_fold_enabled = 1
