@@ -3,6 +3,11 @@
 #SCRIPT TO SYNC FILES
 BASE=~/.dotfiles
 
+# setup shortcuts
+if [ ! -f ~/.scrc ];
+  then
+  touch .scrc
+fi
 #vim
 ln -s $BASE/vimrc ~/.vimrc
 ln -sn $BASE/vim/ ~/.vim
