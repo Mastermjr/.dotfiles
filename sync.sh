@@ -3,6 +3,9 @@
 #SCRIPT TO SYNC FILES
 BASE=~/.dotfiles
 
+#setup gitconfig
+ln -s $BASE/gitconfig ~/.gitconfig
+
 # setup shortcuts
 if [ ! -f ~/.scrc ];
   then
