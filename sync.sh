@@ -52,5 +52,6 @@ fi
 
 #submodules update
 git submodule foreach git checkout master; git pull origin master;
-#if needed:
-#./vim/pack/install.sh
+
+#grab vim modules:
+$BASE/vim/pack/install.sh
