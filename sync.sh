@@ -34,7 +34,7 @@ if [ ! -d vim/tmp/ ];
     mkdir vim/tmp/
 fi
 #generate helptags
-vim -c ":helptags ~/.dotfiles/vim/pack/" -c q
+vim -c ":helptags ALL" -c q
 
 #zsh
 ln -s $BASE/zshrc ~/.zshrc
