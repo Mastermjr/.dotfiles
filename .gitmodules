@@ -17,3 +17,6 @@
 [submodule "vim/pack/syntax/start/syntastic"]
 	path = vim/pack/syntax/start/syntastic
 	url = https://github.com/vim-syntastic/syntastic
+[submodule "vim/pack/utility/start/FastFold"]
+	path = vim/pack/utility/start/FastFold
+	url = https://github.com/Konfekt/FastFold
