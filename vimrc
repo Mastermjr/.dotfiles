@@ -80,13 +80,19 @@ set autoindent
 
 set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"
 
+"line numbers
 set number
 set relativenumber
 
+"organize files!
 set backupdir=~/.vim/tmp,.
 set directory=~/.vim/tmp,.
 set undodir=~/.vim/undo
 set viminfo+=n~/.vim/viminfo
+
+"add support for tabbing autocomplete and paths
+"let F = function('tabbing', lastkey)
+"inoremap <tab> :call F()<CR>
 
 "folding on syntax
 set foldmethod=syntax

@@ -3,6 +3,14 @@
 #SCRIPT TO SYNC FILES
 BASE=~/.dotfiles
 
+#setup gitconfig
+ln -s $BASE/gitconfig ~/.gitconfig
+
+# setup shortcuts
+if [ ! -f ~/.scrc ];
+  then
+  touch .scrc
+fi
 #vim
 ln -s $BASE/vimrc ~/.vimrc
 ln -sn $BASE/vim/ ~/.vim
@@ -26,7 +34,7 @@ if [ ! -d vim/tmp/ ];
     mkdir vim/tmp/
 fi
 #generate helptags
-vim -c ":helptags ~/.dotfiles/vim/pack/" -c q
+vim -c ":helptags ALL" -c q
 
 #zsh
 ln -s $BASE/zshrc ~/.zshrc
@@ -47,3 +55,6 @@ fi
 
 #submodules update
 git submodule foreach git checkout master; git pull origin master;
+
+#grab vim modules:
+$BASE/vim/pack/install.sh
