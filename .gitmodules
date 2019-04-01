@@ -9,15 +9,20 @@
 [submodule "vim/pack/syntax/start/vim-surround"]
 	path = vim/pack/syntax/start/vim-surround
 	url = https://github.com/tpope/vim-surround
+  ignore = dirty
 [submodule "vim/pack/utility/start/nerdtree"]
 	path = vim/pack/utility/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree
+  ignore = dirty
 [submodule "vim/pack/utility/start/vimtex"]
 	path = vim/pack/utility/start/vimtex
 	url = https://github.com/lervag/vimtex
+  ignore = dirty
 [submodule "vim/pack/syntax/start/syntastic"]
 	path = vim/pack/syntax/start/syntastic
 	url = https://github.com/vim-syntastic/syntastic
+  ignore = dirty
 [submodule "vim/pack/utility/start/FastFold"]
 	path = vim/pack/utility/start/FastFold
 	url = https://github.com/Konfekt/FastFold
+  ignore = dirty
