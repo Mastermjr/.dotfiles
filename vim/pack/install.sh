@@ -81,6 +81,7 @@ set_group utility
 package https://github.com/scrooloose/nerdtree &
 package https://github.com/lervag/vimtex &
 package https://github.com/Konfekt/FastFold &
+package https://github.com/tmhedberg/SimpylFold &
 wait
 ) &
 
