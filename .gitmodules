@@ -26,3 +26,6 @@
 	path = vim/pack/utility/start/FastFold
 	url = https://github.com/Konfekt/FastFold
   ignore = dirty
+[submodule "vim/pack/utility/start/SimpylFold"]
+	path = vim/pack/utility/start/SimpylFold
+	url = https://github.com/tmhedberg/SimpylFold
