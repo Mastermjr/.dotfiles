@@ -53,8 +53,11 @@ else
   touch .local_alias
 fi
 
+#grab vim modules:
+cd $BASE/vim/pack/
+./install.sh
+cd $BASE
+
 #submodules update
 git submodule foreach git checkout master; git pull origin master;
 
-#grab vim modules:
-$BASE/vim/pack/install.sh
