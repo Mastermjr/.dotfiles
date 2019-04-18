@@ -62,6 +62,8 @@ endif " has("autocmd")
 "adding in custom vimrc
 "_________________________ __
 "
+"syntax on
+syntax on
 
 "remap ctrl-w to ctrl-[letter]
 nnoremap <C-J> <C-W><C-J>
