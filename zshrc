@@ -7,6 +7,9 @@ export ZSH=/home/$USER/.dotfiles/oh-my-zsh
 #export path to zsh scripts
 export PATH=$HOME/.dotfiles/bin:$PATH
 
+#TODO: supcom
+export INSTALL4J_JAVA_HOME=~/Games/javaFafClient/jdk-10.0.2
+
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -115,3 +118,4 @@ function sc() {
     printf "Usage:\n\tSet shortcut: sc <name> <path>\n\tGo to shortcut: sc <name>\n"
   fi
 }
+

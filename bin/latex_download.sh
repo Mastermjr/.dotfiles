@@ -1,7 +1,9 @@
 DEPENDENCIES=(
-   spverbatim 
+  mathtoolsgraphicx
 )
 PACKAGES=()
+
+echo $DEPENDENCIES 
 # Loop over all the dependencies
 for dependency in "${DEPENDENCIES[@]}"; do
     # Check dnf for the parent package and trim its output
