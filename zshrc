@@ -126,5 +126,4 @@ function sc() {
 }
 
 #break-timer
-alias break="sleep 900 && mate-screensaver-command -l"
-
+alias break="(sleep 900 && mate-screensaver-command -l) &"
