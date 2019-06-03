@@ -7,7 +7,10 @@ export ZSH=/home/$USER/.dotfiles/oh-my-zsh
 #export path to zsh scripts
 export PATH=$HOME/.dotfiles/bin:$PATH
 
-#TODO: supcom
+#export path to zsh scripts
+export PATH=$PATH:/usr/local/go/bin
+
+#supcom
 export INSTALL4J_JAVA_HOME=~/Games/javaFafClient/jdk-10.0.2
 
 
@@ -95,9 +98,12 @@ source $ZSH/oh-my-zsh.sh
 ### other aliases ####
 setxkbmap -option caps:swapescape
 alias 1920="xrandr --output eDP1 --mode 1920x1080"
+alias zsh-history-fix="mv .zsh_history .zsh_history_bad; strings .zsh_history_bad > .zsh_history; fc -R .zsh_history"
+
+#editing files
 alias zsh-source="source ~/.zshrc"
 alias zsh-edit="vim ~/.zshrc"
-alias zsh-history-fix="mv .zsh_history .zsh_history_bad; strings .zsh_history_bad > .zsh_history; fc -R .zsh_history"
+alias add-alias="vim ~/.dotfiles/linux_sync/.local_alias; zsh-source"
 
 #add_local_alias
 source ~/.dotfiles/linux_sync/.local_alias 
@@ -118,4 +124,7 @@ function sc() {
     printf "Usage:\n\tSet shortcut: sc <name> <path>\n\tGo to shortcut: sc <name>\n"
   fi
 }
+
+#break-timer
+alias break="sleep 900 && mate-screensaver-command -l"
 
