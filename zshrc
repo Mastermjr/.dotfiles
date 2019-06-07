@@ -1,5 +1,8 @@
-# If you come from bash you might have to change your $PATH.
+#BASH PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH 
+
+#.local/bin PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/$USER/.dotfiles/oh-my-zsh
@@ -7,8 +10,9 @@ export ZSH=/home/$USER/.dotfiles/oh-my-zsh
 #export path to zsh scripts
 export PATH=$HOME/.dotfiles/bin:$PATH
 
-#export path to zsh scripts
+#export path to go 
 export PATH=$PATH:/usr/local/go/bin
+
 
 #supcom
 export INSTALL4J_JAVA_HOME=~/Games/javaFafClient/jdk-10.0.2
@@ -116,14 +120,11 @@ alias add-vim-plug="vim ~/.dotfiles/vim/pack/install.sh +65; curr_dir=$(pwd);cd 
 function sc() {
   if [ $2 ]
   then
-    shortcut.sh $1 $2
+    shortcut $1 $2
   elif [ $1 ]
   then
-    cd "$(shortcut.sh $1)"
+    cd "$(shortcut $1)"
   else
     printf "Usage:\n\tSet shortcut: sc <name> <path>\n\tGo to shortcut: sc <name>\n"
   fi
 }
-
-#break-timer
-alias break="(sleep 900 && mate-screensaver-command -l) &"
