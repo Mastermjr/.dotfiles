@@ -9,6 +9,7 @@ Syncing my Dotfiles
 chsh -s /bin/zsh
 ```
 ./sync.sh
+pip3 install jedi-vim --user
 
 ## fun submodule commands:
   `'FolderName' already exists in the index` 
