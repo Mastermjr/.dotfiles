@@ -121,7 +121,7 @@ call plug#begin("~/.dotfiles/vim/pack/")
 call plug#end()
 
 "update helptags
-plug#helptags() 
+call plug#helptags() 
 
 
 
