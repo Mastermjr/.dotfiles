@@ -61,6 +61,11 @@ function package () {
 
 # ( executes a subshell
 #SETGROUPS
+( 
+set_group git 
+package https://github.com/tpope/vim-fugitive.git &
+wait
+) &
 
 
 ( 

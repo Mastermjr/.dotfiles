@@ -29,3 +29,6 @@
 [submodule "vim/pack/utility/start/SimpylFold"]
 	path = vim/pack/utility/start/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold
+[submodule "vim/pack/git/start/vim-fugitive"]
+	path = vim/pack/git/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
