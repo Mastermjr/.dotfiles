@@ -92,9 +92,10 @@ set directory=~/.vim/tmp,.
 set undodir=~/.vim/undo
 set viminfo+=n~/.vim/viminfo
 
-"plugin loading vim -plug
-"helptags: plug#helptags() 
-"PlugUpdate | PlugUpgrade
+"plugin loading vim-plug
+"TODO: add in ulti-snips/youcompleteme
+"TODO: vim-gitgutter
+"TODO: vim-airline
 call plug#begin("~/.dotfiles/vim/pack/")
 
   "git
@@ -119,6 +120,8 @@ call plug#begin("~/.dotfiles/vim/pack/")
 
 call plug#end()
 
+"update helptags
+plug#helptags() 
 
 
 
