@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#OUTDATED, keeping for backup
 #Confirm clone/update for repo
 # 
 # Arguments:

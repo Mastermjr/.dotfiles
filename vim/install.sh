@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#outdated keeping for backup
 # Create new folder in ~/.vim/pack that contains a start folder and cd into it.
 #
 # Arguments:
