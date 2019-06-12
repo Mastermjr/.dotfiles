@@ -1,6 +1,7 @@
 vim/tmp/* 
 vim/undo/*
 vim/pack/tags*
+vim/pack/*
 vim/.netrwhist
 vim/viminfo
 linux_sync/

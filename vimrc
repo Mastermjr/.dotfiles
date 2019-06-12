@@ -62,6 +62,8 @@ endif " has("autocmd")
 "adding in custom vimrc
 "_________________________ __
 "
+"syntax on
+syntax on
 
 "remap ctrl-w to ctrl-[letter]
 nnoremap <C-J> <C-W><C-J>
@@ -90,6 +92,39 @@ set directory=~/.vim/tmp,.
 set undodir=~/.vim/undo
 set viminfo+=n~/.vim/viminfo
 
+"plugin loading vim-plug
+"TODO: add in ulti-snips/youcompleteme
+"TODO: vim-gitgutter
+"TODO: vim-airline
+call plug#begin("~/.dotfiles/vim/pack/")
+
+  "git
+  Plug 'https://github.com/tpope/vim-fugitive.git'
+
+  "python
+  Plug 'https://github.com/davidhalter/jedi-vim'
+
+  "syntax
+  Plug 'https://github.com/tpope/vim-surround'
+  Plug 'https://github.com/vim-syntastic/syntastic'
+
+  "utility
+  Plug 'https://github.com/scrooloose/nerdtree'
+  Plug 'https://github.com/lervag/vimtex'
+  Plug 'https://github.com/Konfekt/FastFold'
+  Plug 'https://github.com/tmhedberg/SimpylFold'
+
+  "ui
+
+  "colorschemes
+
+call plug#end()
+
+"update helptags
+call plug#helptags() 
+
+
+
 "add support for tabbing autocomplete and paths
 "let F = function('tabbing', lastkey)
 "inoremap <tab> :call F()<CR>
@@ -109,6 +144,7 @@ nnoremap  zz z=
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1

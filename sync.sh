@@ -33,8 +33,19 @@ if [ ! -d vim/tmp/ ];
   then
     mkdir vim/tmp/
 fi
-#generate helptags
-vim -c ":helptags ALL" -c q
+
+#update vim-plug
+vim -c ":PlugUpgrade" -c q
+
+if [ ! -d vim/pack/ ];
+  then
+    mkdir vim/pack/
+    #generate helptags and install plugins
+    vim -c ":PlugInstall" -c q
+  else
+    vim -c ":PlugUpdate" -c q
+fi
+
 
 #zsh
 ln -s $BASE/zshrc ~/.zshrc
@@ -46,15 +57,12 @@ ln -s $BASE/tmux.conf ~/.tmux.conf
 cd oh-my-zsh/
 ln -s $BASE/custom-oh-my-zsh/mikey_theme.zsh-theme custom/themes/mikey_theme.zsh-theme
 
+#submodules update
+git submodule foreach git checkout master; git pull origin master;
+
 #add in .local_aliases file
 if [ -f ~/.local_alias ]; then
   exit
 else
   touch .local_alias
 fi
-
-#submodules update
-git submodule foreach git checkout master; git pull origin master;
-
-#grab vim modules:
-$BASE/vim/pack/install.sh

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#outdated keeping for backup
 # Create new folder in ~/.vim/pack that contains a start folder and cd into it.
 #
 # Arguments:
@@ -61,6 +61,11 @@ function package () {
 
 # ( executes a subshell
 #SETGROUPS
+( 
+set_group git 
+package https://github.com/tpope/vim-fugitive.git &
+wait
+) &
 
 
 ( 

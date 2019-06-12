@@ -1,0 +1,5 @@
+#!/bin/bash
+for szFile in $1 
+do 
+    convert "$szFile" -rotate 90 /tmp/"$(basename "$szFile")" ; 
+done

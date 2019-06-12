@@ -1,5 +1,8 @@
-# If you come from bash you might have to change your $PATH.
+#BASH PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH 
+
+#.local/bin PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/$USER/.dotfiles/oh-my-zsh
@@ -10,8 +13,11 @@ export PATH=$HOME/.dotfiles/bin:$PATH
 #export path to ruby 
 export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
 
-#export supcom
-export INSTALL4J_JAVA_HOME=/home/master/FAF/javaFafClient/jdk-10.0.2/
+#export path to go 
+export PATH=$PATH:/usr/local/go/bin
+
+#supcom
+export INSTALL4J_JAVA_HOME=~/Games/javaFafClient/jdk-10.0.2
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -97,9 +103,12 @@ source $ZSH/oh-my-zsh.sh
 ### other aliases ####
 setxkbmap -option caps:swapescape
 alias 1920="xrandr --output eDP1 --mode 1920x1080"
+alias zsh-history-fix="mv .zsh_history .zsh_history_bad; strings .zsh_history_bad > .zsh_history; fc -R .zsh_history"
+
+#editing files
 alias zsh-source="source ~/.zshrc"
 alias zsh-edit="vim ~/.zshrc"
-alias zsh-history-fix="mv .zsh_history .zsh_history_bad; strings .zsh_history_bad > .zsh_history; fc -R .zsh_history"
+alias add-alias="vim ~/.dotfiles/linux_sync/.local_alias; zsh-source"
 
 #add_local_alias
 source ~/.dotfiles/linux_sync/.local_alias 
@@ -112,10 +121,10 @@ alias add-vim-plug="vim ~/.dotfiles/vim/pack/install.sh +65; curr_dir=$(pwd);cd 
 function sc() {
   if [ $2 ]
   then
-    shortcut.sh $1 $2
+    shortcut $1 $2
   elif [ $1 ]
   then
-    cd "$(shortcut.sh $1)"
+    cd "$(shortcut $1)"
   else
     printf "Usage:\n\tSet shortcut: sc <name> <path>\n\tGo to shortcut: sc <name>\n"
   fi
