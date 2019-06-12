@@ -7,6 +7,11 @@ export ZSH=/home/$USER/.dotfiles/oh-my-zsh
 #export path to zsh scripts
 export PATH=$HOME/.dotfiles/bin:$PATH
 
+#export path to ruby 
+export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
+
+#export supcom
+export INSTALL4J_JAVA_HOME=/home/master/FAF/javaFafClient/jdk-10.0.2/
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
