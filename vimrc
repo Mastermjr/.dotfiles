@@ -92,6 +92,11 @@ set directory=~/.vim/tmp,.
 set undodir=~/.vim/undo
 set viminfo+=n~/.vim/viminfo
 
+"add set list
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+noremap L :set list<CR>                           
+noremap Ll :set list!<CR>
+
 "plugin loading vim-plug
 "TODO: add in ulti-snips/youcompleteme
 "TODO: vim-gitgutter

@@ -11,6 +11,14 @@ if [ ! -f ~/.scrc ];
   then
   touch ~/.scrc
 fi
+
+#setup linux_sync dir
+if [ ! -f ./linux_sync ];
+  then
+  mkdir linux_sync
+  touch ./linux_sync/.local_alias
+fi
+
 #vim
 ln -s $BASE/vimrc ~/.vimrc
 ln -sn $BASE/vim/ ~/.vim
