@@ -9,7 +9,7 @@ ln -s $BASE/gitconfig ~/.gitconfig
 # setup shortcuts
 if [ ! -f ~/.scrc ];
   then
-  touch .scrc
+  touch ~/.scrc
 fi
 #vim
 ln -s $BASE/vimrc ~/.vimrc
