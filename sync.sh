@@ -16,7 +16,7 @@ fi
 if [ ! -f ./linux_sync ];
   then
   mkdir linux_sync
-  touch ./linux_sync/.local_alias
+  touch ./linux_sync/local_alias
 fi
 
 #vim
