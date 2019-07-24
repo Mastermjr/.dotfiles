@@ -9,14 +9,17 @@ export ZSH=$HOME/.dotfiles/oh-my-zsh
 
 #export path to zsh scripts
 export PATH=$HOME/.dotfiles/bin:$PATH
-source ./linux_sync/bin/*
+source $HOME/.dotfiles/linux_sync/bin/*
 
 #export path to ruby 
 export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
 
 #export path to go 
 export PATH=$PATH:/usr/local/go/bin
-export GOPATH=/usr/local/go/bin #define go get/install
+export GOPATH=$HOME/go
+export GOROOT=/usr/local/go/
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
 
 #supcom
 export INSTALL4J_JAVA_HOME=~/Games/javaFafClient/jdk-10.0.2
