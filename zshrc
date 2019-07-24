@@ -9,7 +9,11 @@ export ZSH=$HOME/.dotfiles/oh-my-zsh
 
 #export path to zsh scripts
 export PATH=$HOME/.dotfiles/bin:$PATH
-source $HOME/.dotfiles/linux_sync/bin/*
+
+if [ ! -z "$(ls $HOME/.dotfiles/linux_sync/bin/)" ];
+then
+  source $HOME/.dotfiles/linux_sync/bin/*
+fi
 
 #export path to ruby 
 export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
