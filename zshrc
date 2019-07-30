@@ -19,7 +19,7 @@ export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
 
 #export path to go 
 export PATH=$PATH:/usr/local/go/bin
-export GOPATH=/usr/local/go/bin #define go get/install
+export GOPATH=/usr/local/go #define go get/install
 
 #supcom
 export INSTALL4J_JAVA_HOME=~/Games/javaFafClient/jdk-10.0.2
