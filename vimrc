@@ -49,13 +49,12 @@ else
 
 endif " has("autocmd")
 
-" Add optional packages.
-"
-" The matchit plugin makes the % command work better, but it is not backwards
-" compatible.
-"if has('syntax') && has('eval')
-"  packadd matchit
-"endif
+"adding plugin filetype:
+set nocp                    " 'compatible' is not set
+filetype plugin on          " plugins are enabled
+
+"grab remote dir filepaths/
+let g:netrw_keepdir=0
 
 "syntax on
 syntax on
@@ -113,7 +112,7 @@ call plug#begin("~/.dotfiles/vim/pack/")
   Plug 'https://github.com/dense-analysis/ale'
 
   "utility
-  Plug 'https://github.com/scrooloose/nerdtree'
+  "Plug 'https://github.com/scrooloose/nerdtree'
   "Plug 'https://github.com/lervag/vimtex'
   Plug 'https://github.com/Konfekt/FastFold'
   Plug 'https://github.com/tmhedberg/SimpylFold'
@@ -125,6 +124,9 @@ call plug#begin("~/.dotfiles/vim/pack/")
   " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
   Plug 'ncm2/ncm2-bufword'
   Plug 'ncm2/ncm2-path'
+
+  "airline
+  Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
@@ -152,30 +154,57 @@ let g:python3_host_prog="/usr/local/bin/python3"
 
 "TODO:
 "add support for tabbing autocomplete and paths
+"""""""""""""""""
+" ncm2 settings done"
+"""""""""""""""""
+
+""""""""""""""""""""
+" airline settings "
+""""""""""""""""""""
+"set smarter tab line
+let g:airline#extensions#tabline#enabled = 1
+" better buffer switching:
+"Note: bd to close current buffer
+nnoremap gB :bnext<CR>
+nnoremap gb :bprevious<CR>
+nnoremap B :bnext<CR>
+
+"straigh tabs
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" unique_tail
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+""""""""""""""""""""
+" airline settings done "
+""""""""""""""""""""
 
 "folding on syntax
 set foldmethod=syntax
 
-" add nerd tree key
-map <C-n> :NERDTreeToggle<CR>
+"netrw toggle 
+" Adjust size: [N]Lexplore
+let g:netrw_liststyle=3
+let g:NetrwIsOpen=0
+function! ToggleNetrw()
+    if g:NetrwIsOpen
+        let g:NetrwIsOpen=0
+        autocmd FileType netrw setl bufhidden=delete
+    else
+        normal <c-l>
+        let g:NetrwIsOpen=1
+        silent 30Lexplore
+    endif
+endfunction
+
+" Add your own mapping. For example:
+noremap <silent> <C-n> :call ToggleNetrw()<CR>
 
 " spelling remaps
 nnoremap Ss :set spell spelllang=en_us<CR>
 nnoremap ss :set nospell<CR>
 nnoremap  zz z=
-
-"syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"
-"  " options
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"  " python
-"let g:syntastic_python_checkers = ['python', 'pylint']
 
 "vimtex
 let g:vimtex_fold_enabled = 1

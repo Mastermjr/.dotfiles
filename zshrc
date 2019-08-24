@@ -97,6 +97,7 @@ alias zsh-history-fix="mv .zsh_history .zsh_history_bad; strings .zsh_history_ba
 alias zsh-source="source ~/.zshrc"
 alias zsh-edit="vim ~/.zshrc"
 alias add-alias="vim ~/.dotfiles/linux_sync/local_alias; zsh-source"
+alias vim="nvim"
 
 #add_local_alias
 source ~/.dotfiles/linux_sync/local_alias 
