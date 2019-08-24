@@ -4,12 +4,12 @@
 BASE=~/.dotfiles
 
 #setup gitconfig
-ln -s $BASE/gitconfig ~/.gitconfig
+ln -s $BASE/gitconfig $HOME/.gitconfig
 
 # setup shortcuts
-if [ ! -f ~/.scrc ];
+if [ ! -f $HOME/.scrc ];
   then
-  touch ~/.scrc
+  touch $HOME/.scrc
 fi
 
 #setup linux_sync dir
@@ -20,57 +20,57 @@ if [ ! -f ./linux_sync ];
 fi
 
 #vim
-ln -s $BASE/vimrc ~/.vimrc
-ln -sn $BASE/vim/ ~/.vim
+ln -s $BASE/vimrc $HOME/.vimrc
+ln -sn $BASE/vim/ $HOME/.vim
 
 #make vim dirs
-if [ -f ~/.viminfo ];
+if [ ! -f $HOME/.viminfo ];
   then
-  cp ~/.viminfo $BASE/vim/viminfo
-  rm ~/.viminfo
-  ln -sn $BASE/vim/viminfo ~/.viminfo
+  cp $HOME/.viminfo $BASE/vim/viminfo
+  rm $HOME/.viminfo
+  ln -sn $BASE/vim/viminfo $HOME/.viminfo
   else
-  ln -sn $BASE/vim/viminfo ~/.viminfo
+  ln -sn $BASE/vim/viminfo $HOME/.viminfo
 fi
-
 if [ ! -d vim/undo/ ];
   then
-    mkdir vim/undo/
+    mkdir $BASE/vim/undo/
 fi
 if [ ! -d vim/tmp/ ];
   then
-    mkdir vim/tmp/
+    mkdir $BASE/vim/tmp/
+fi
+
+#nvim config
+if [ ! -d $HOME/.config/nvim/ ];
+  then
+    mkdir $HOME/.config/nvim/
+fi
+
+if [ ! -f $HOME/.config/nvim/init.vim ];
+  then
+    ln -sn $BASE/init.vim $HOME/.config/nvim/init.vim
 fi
 
 #update vim-plug
-vim -c ":PlugUpgrade" -c q
+nvim -c ":PlugUpgrade" -c q
 
 if [ ! -d vim/pack/ ];
   then
-    mkdir vim/pack/
+    mkdir $BASE/vim/pack/
     #generate helptags and install plugins
-    vim -c ":PlugInstall" -c q
+    nvim -c ":PlugInstall" -c q
   else
-    vim -c ":PlugUpdate" -c q
+    nvim -c ":PlugUpdate" -c q
 fi
 
-
 #zsh
-ln -s $BASE/zshrc ~/.zshrc
+ln -s $BASE/zshrc $HOME/.zshrc
 
 #tmux
-ln -s $BASE/tmux.conf ~/.tmux.conf
+ln -s $BASE/tmux.conf $HOME/.tmux.conf
 
 #oh-my-zsh custom
-cd oh-my-zsh/
-ln -s $BASE/custom-oh-my-zsh/mikey_theme.zsh-theme custom/themes/mikey_theme.zsh-theme
 
 #submodules update
 git submodule foreach git checkout master; git pull origin master;
-
-#add in .local_aliases file
-if [ -f ~/.local_alias ]; then
-  exit
-else
-  touch .local_alias
-fi

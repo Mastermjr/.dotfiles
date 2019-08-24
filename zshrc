@@ -12,7 +12,10 @@ export PATH=$HOME/.dotfiles/bin:$PATH
 
 if [ ! -z "$(ls $HOME/.dotfiles/linux_sync/bin/)" ];
 then
-  source $HOME/.dotfiles/linux_sync/bin/*
+ for s in $HOME/.dotfiles/linux_sync/bin/*;
+ do
+  source $s  
+ done
 fi
 
 #export path to ruby 
@@ -80,20 +83,12 @@ plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
  else
    export EDITOR='vim'
  fi
-
-
-### check setxkbmap ###
-if xset q &>/dev/null; then
-  setxkbmap -option caps:swapescape
-fi
-    
 
 ### other aliases ####
 alias 1920="xrandr --output eDP1 --mode 1920x1080"

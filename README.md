@@ -5,11 +5,15 @@ Syncing my Dotfiles
 **git clone --recurse-submodules** git@github.com:Mastermjr/.dotfiles.git
 
 ## After Clone:
-### TODO: add in all downloads needed
+**TODO: add in all downloads needed**
 ```shell
 chsh -s /bin/zsh
 ```
 ./sync.sh
+sudo apt install neovim **OR** brew install neovim
+python3 -m pip install pynvim
+
+#### OLD:
 pip3 install jedi-vim --user
 
 

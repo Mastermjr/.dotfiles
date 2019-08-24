@@ -57,11 +57,6 @@ endif " has("autocmd")
 "  packadd matchit
 "endif
 
-"_____________________________
-"
-"adding in custom vimrc
-"_________________________ __
-"
 "syntax on
 syntax on
 
@@ -80,6 +75,7 @@ set expandtab
 "turn on autoindent
 set autoindent
 
+"TODO: get a better status line
 set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"
 
 "line numbers
@@ -107,32 +103,55 @@ call plug#begin("~/.dotfiles/vim/pack/")
   Plug 'https://github.com/tpope/vim-fugitive.git'
 
   "python
-  Plug 'https://github.com/davidhalter/jedi-vim'
+  "Plug 'https://github.com/davidhalter/jedi-vim'
 
   "syntax
   Plug 'https://github.com/tpope/vim-surround'
-  Plug 'https://github.com/vim-syntastic/syntastic'
+  "Plug 'https://github.com/vim-syntastic/syntastic'
+
+  "linting
+  Plug 'https://github.com/dense-analysis/ale'
 
   "utility
   Plug 'https://github.com/scrooloose/nerdtree'
-  Plug 'https://github.com/lervag/vimtex'
+  "Plug 'https://github.com/lervag/vimtex'
   Plug 'https://github.com/Konfekt/FastFold'
   Plug 'https://github.com/tmhedberg/SimpylFold'
 
-  "ui
+  " assuming you're using vim-plug: https://github.com/junegunn/vim-plug
+  "Plug 'https://github.com/ncm2/ncm2'
+  "Plug 'https://github.com/roxma/nvim-yarp'
 
-  "colorschemes
+  " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+  Plug 'ncm2/ncm2-bufword'
+  Plug 'ncm2/ncm2-path'
 
 call plug#end()
 
 "update helptags
 call plug#helptags() 
 
+"""""""""""""""""
+" ncm2 settings "
+"""""""""""""""""
+" enable ncm2 for all buffers
+" autocmd BufEnter * call ncm2#enable_for_buffer()
 
+" IMPORTANT: :help Ncm2PopupOpen for more information
+"set completeopt=noinsert,menuone,noselect
 
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+"inoremap <c-c> <ESC>
+
+" Use <TAB> to select the popup menu:
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" python3
+let g:python3_host_prog="/usr/local/bin/python3"
+
+"TODO:
 "add support for tabbing autocomplete and paths
-"let F = function('tabbing', lastkey)
-"inoremap <tab> :call F()<CR>
 
 "folding on syntax
 set foldmethod=syntax
@@ -146,17 +165,17 @@ nnoremap ss :set nospell<CR>
 nnoremap  zz z=
 
 "syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-  " options
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-  " python
-let g:syntastic_python_checkers = ['python', 'pylint']
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"
+"  " options
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"  " python
+"let g:syntastic_python_checkers = ['python', 'pylint']
 
 "vimtex
 let g:vimtex_fold_enabled = 1
