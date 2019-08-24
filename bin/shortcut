@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [ -f "$HOME/.scrc" ];
   then
@@ -19,7 +19,13 @@ done < $RCPATH
 if [ $2 ]
 then
   # Expand path
-  path=$(readlink -m $2)
+  # check if readlink or greadlink should be used (mac or linux)
+  if [ ! -z "$(command -v greadlink)" ];
+  then
+    path="$(greadlink -m $2)"
+  else
+    path="$(readlink -m $2)"
+  fi
 
   # Set new shortcut
   shortcuts["$1"]=$path

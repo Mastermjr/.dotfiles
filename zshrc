@@ -104,6 +104,7 @@ source ~/.dotfiles/linux_sync/local_alias
 # easily edit configs #
 alias add-vim-plug="vim ~/.dotfiles/vim/pack/install.sh +65; curr_dir=$(pwd);cd ~/.dotfiles/vim/pack; ./install.sh; cd ~/.dotfiles/vim/; ./add_submod.sh; cd $curr_dir" #auto jump to group lines
 
+#TODO: set command to check if on mac, then set envvar
 #shortcuts function
 #also have pushd (move to dir) dir (list)  popd (move back to old dir)
 function sc() {
