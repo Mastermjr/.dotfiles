@@ -4,6 +4,8 @@ Syncing my Dotfiles
 **git clone --recurse-submodules** https://github.com/Mastermjr/.dotfiles.git  
 **git clone --recurse-submodules** git@github.com:Mastermjr/.dotfiles.git
 
+## tmux-resurrect info: 
+  saves to: **.tmux/resurrect/**
 ## After Clone:
 **TODO: add in all downloads needed**
 ```shell
@@ -28,6 +30,7 @@ pip3 install jedi-vim --user
   :packloadall
 
 ## update submodules
+  **forgot --recurse:** git submodule update --init
   git submodule foreach git pull origin [master||BRANCH]
   git submodule update
 
