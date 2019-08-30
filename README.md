@@ -6,17 +6,34 @@ Syncing my Dotfiles
 
 ## tmux-resurrect info: 
   saves to: **.tmux/resurrect/**
+
 ## After Clone:
 **TODO: add in all downloads needed**
-```shell
+1. ```shell
 chsh -s /bin/zsh
+``s
+e``
+2. ./sync.sh
+3. ```shell 
+sudo apt install neovim 
+brew install neovim
 ```
-./sync.sh
-sudo apt install neovim **OR** brew install neovim
-python3 -m pip install pynvim
+4. python3 -m pip install pynvim
+5. Linters: 
+  - sbt/scalac (apt/brew)
+  ``` shell
+  brew install scala sbt
+  sudo apt install scala sbt
+  ```
+  - pylint,flake8 (python)
+  - vint (python)
+  ``` shell
+  pip3 isntall pylint flake8 vim-vint
+  ```
 
-#### OLD:
-pip3 install jedi-vim --user
+#sMAC:
+emap cmd to ctrl-a: https://superuser.com/questions/259614/bind-tmux-prefix-to-os-x-cmd-key-or-any-other-binding
+ctrl-a == 0x02
 
 
 ## fun submodule commands:

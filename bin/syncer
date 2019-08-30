@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+s=""
+t=""
+e=""
+ while getopts "hs:t:e:" opt; do
+  case ${opt} in
+    e) 
+      e=${OPTARG}
+      if [ -e "$e" ]
+        then
+        echo "Excluding $(cat $e)"
+      else
+        echo "Include proper exclude path"
+        echo "Usage: ([-h])(-e exclude-from path) [exact path 1] [exact path 2]"
+        exit 0
+      fi
+      ;;
+    s) s=${OPTARG};;
+    t) t=${OPTARG};;
+    h ) # process option a
+      echo "Usage: ([-h]) [exact path 1] [exact path 2]"
+      exit 0
+      ;;
+    \? ) echo "Usage: ([-h]) [exact path 1] [exact path 2]"
+      exit 0
+      ;;
+  esac
+done
+
+
+if [ ! -e "$s" ] ;
+then
+  echo "source: $s does not exist!"
+  exit 1
+fi
+
+if [ -e "$e" ];
+then
+  echo "rsync $s and $t"
+  read -r -p "Are you sure? [y/N] " response
+  case "$response" in
+      [yY][eE][sS]|[yY]) 
+          rsync -azP -e ssh --exclude-from=$e $s $t
+          ;;
+      [nN][oO]|[nN]) 
+          exit 0
+          ;;
+  esac
+else
+  echo "rsync $s and $t"
+  read -r -p "Are you sure? [y/N] " response
+  case "$response" in
+      [yY][eE][sS]|[yY]) 
+          rsync -azP -e ssh $s $t
+          ;;
+      [nN][oO]|[nN]) 
+          exit 0
+          ;;
+  esac
+fi

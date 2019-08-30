@@ -1,26 +1,45 @@
 #!/bin/bash
 #break-timer
 
-if [ ! $(which yad) ];
-  then  
-  printf "Please install yad"
+if [ $(which yad) ];
+then
+  time=$1
+
+  if  [[ ! $time  ]]; then
+     printf "Usage: teatime [TIME]\n WHERE TIME=X[s||m||h]"
+     exit -1
+  fi
+
+  while true;
+  do
+    # sleep for x milliseconds, lock screen, send notification that needs to be clicked!
+    sleep $time && mate-screensaver-command -l  
+    yad --image "dialog-question" --title "Continue?" --text " Reset Timer $$\?" --button=No:1 --button=YES:0
+    if [[ $? -eq 1 ]];
+      then
+      exit 0
+    fi
+  done
+elif [ $(which osascript) ];
+then
+  time=$1
+
+  if  [[ ! $time  ]]; then
+     printf "Usage: teatime [TIME]\n WHERE TIME=X[s||m||h]"
+     exit -1
+  fi
+
+  while true;
+  do
+    # sleep for x milliseconds, lock screen, send notification that needs to be clicked!
+    echo "sleeping seconds $time"
+    sleep $time 
+    pmset displaysleepnow 
+    osascript -e 'tell app "iTerm" to display dialog "Breaktime is running!" buttons {"OK"} with icon note'
+  done
+else
+  printf "Please install yad or run on mac"
   exit -1
 fi
 
-time=$1
 
-if  [[ ! $time  ]]; then
-   printf "Usage: teatime [TIME]\n WHERE TIME=X[s||m||h]"
-   exit -1
-fi
-
-while true;
-do
-  # sleep for x milliseconds, lock screen, send notification that needs to be clicked!
-  sleep $time && mate-screensaver-command -l  
-  yad --image "dialog-question" --title "Continue?" --text " Reset Timer $$\?" --button=No:1 --button=YES:0
-  if [[ $? -eq 1 ]];
-    then
-    exit 0
-  fi
-done

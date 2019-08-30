@@ -42,14 +42,11 @@ if [ ! -d vim/tmp/ ];
 fi
 
 #nvim config
-if [ ! -d $HOME/.config/nvim/ ];
+if [! -d $HOME/.config/nvim/ ];
   then
-    mkdir $HOME/.config/nvim/
-fi
-
-if [ ! -f $HOME/.config/nvim/init.vim ];
-  then
-    ln -sn $BASE/init.vim $HOME/.config/nvim/init.vim
+    ln -sn $BASE/nvim/ $HOME/.config/nvim/
+  else
+    echo "MAY NEED TO REPLACE CURRENT NVIM"
 fi
 
 #update vim-plug
@@ -70,7 +67,11 @@ ln -s $BASE/zshrc $HOME/.zshrc
 #tmux
 ln -s $BASE/tmux.conf $HOME/.tmux.conf
 
-#oh-my-zsh custom
+#GO dir setups
+if [ ! -d "${GOPATH}" ];
+then
+  mkdir "${GOPATH}"
+fi
 
 #submodules update
 git submodule foreach git checkout master; git pull origin master;

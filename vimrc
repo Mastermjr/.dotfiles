@@ -1,23 +1,45 @@
-" An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2016 Jul 28
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
-
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
-
 " Get the defaults that most users want.
 "source $VIMRUNTIME/.vim
 
-if has("vms")
+"plugin loading vim-plug
+call plug#begin('~/.dotfiles/vim/pack/')
+
+  "git
+  Plug 'https://github.com/tpope/vim-fugitive.git'
+  Plug 'airblade/vim-gitgutter'
+
+  "scheme
+  Plug 'vim-airline/vim-airline'
+  Plug 'tomasr/molokai'
+
+  "syntax and linting
+  Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
+  Plug 'https://github.com/tpope/vim-surround'
+  "Plug 'https://github.com/dense-analysis/ale'
+
+  "language
+  Plug 'https://github.com/lervag/vimtex'
+  Plug 'derekwyatt/vim-scala'
+
+  "tab
+  "Plug 'ervandew/supertab'
+
+  "utility
+  Plug 'https://github.com/scrooloose/nerdtree'
+  Plug 'https://github.com/Konfekt/FastFold'
+  Plug 'https://github.com/tmhedberg/SimpylFold'
+
+call plug#end()
+
+"update helptags
+call plug#helptags() 
+
+"""""""""""""""""""
+" builtin settings" 
+"""""""""""""""""""
+
+"backup and undo!
+if has('vms')
   set nobackup		" do not keep a backup file, use versions instead
 else
   set backup		" keep a backup file (restore to previous version)
@@ -26,35 +48,27 @@ else
   endif
 endif
 
-if &t_Co > 2 || has("gui_running")
+"highlighting!
+if &t_Co > 2 || has('gui_running')
   " Switch on highlighting the last used search pattern.
   set hlsearch
 endif
 
 " Only do this part when compiled with support for autocommands.
-if has("autocmd")
-
+if has('lautocmd')
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
   au!
-
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
-
   augroup END
-
 else
-
   set autoindent		" always set autoindenting on
-
 endif " has("autocmd")
 
 "adding plugin filetype:
-set nocp                    " 'compatible' is not set
+"set nocp                    " 'compatible' is not set
 filetype plugin on          " plugins are enabled
-
-"grab remote dir filepaths/
-let g:netrw_keepdir=0
 
 "syntax on
 syntax on
@@ -74,9 +88,6 @@ set expandtab
 "turn on autoindent
 set autoindent
 
-"TODO: get a better status line
-set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"
-
 "line numbers
 set number
 set relativenumber
@@ -92,71 +103,111 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 noremap L :set list<CR>                           
 noremap Ll :set list!<CR>
 
-"plugin loading vim-plug
-"TODO: add in ulti-snips/youcompleteme
-"TODO: vim-gitgutter
-"TODO: vim-airline
-call plug#begin("~/.dotfiles/vim/pack/")
+"folding on syntax
+set foldmethod=syntax
 
-  "git
-  Plug 'https://github.com/tpope/vim-fugitive.git'
+" spelling remaps
+nnoremap Ss :set spell spelllang=en_us<CR>
+nnoremap ss :set nospell<CR>
+nnoremap  zz z=
+"""""""""""""""""""""""""
+" builtin settings done "
+"""""""""""""""""""""""""
 
-  "python
-  "Plug 'https://github.com/davidhalter/jedi-vim'
+"""""""""""""""""""""
+" coc-nvim settings "
+"""""""""""""""""""""
+" coc
+let g:airline#extensions#coc#enabled = 1
 
-  "syntax
-  Plug 'https://github.com/tpope/vim-surround'
-  "Plug 'https://github.com/vim-syntastic/syntastic'
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
 
-  "linting
-  Plug 'https://github.com/dense-analysis/ale'
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
 
-  "utility
-  "Plug 'https://github.com/scrooloose/nerdtree'
-  "Plug 'https://github.com/lervag/vimtex'
-  Plug 'https://github.com/Konfekt/FastFold'
-  Plug 'https://github.com/tmhedberg/SimpylFold'
+" always show signcolumns
+set signcolumn=yes
 
-  " assuming you're using vim-plug: https://github.com/junegunn/vim-plug
-  "Plug 'https://github.com/ncm2/ncm2'
-  "Plug 'https://github.com/roxma/nvim-yarp'
+" Better display for messages
+set cmdheight=2
 
-  " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
-  Plug 'ncm2/ncm2-bufword'
-  Plug 'ncm2/ncm2-path'
+" Use <c-space> for trigger completion.
+inoremap <silent><expr> <C-n> coc#refresh()
 
-  "airline
-  Plug 'vim-airline/vim-airline'
+" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-call plug#end()
+" Use `[c` and `]c` for navigate diagnostics
+nmap <silent> <C-j> <Plug>(coc-diagnostic-prev)
+nmap <silent> <C-k> <Plug>(coc-diagnostic-next)
 
-"update helptags
-call plug#helptags() 
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Remap for do codeAction of current line
+nmap <leader>ac <Plug>(coc-codeaction)
+
+" Remap for do action format
+nnoremap <silent> F :call CocAction('format')<CR>
+
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Show all diagnostics
+nnoremap <silent> <space>d  :<C-u>CocList diagnostics<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+""""""""""""""""""""""""""
+" coc-nvim settings  done"
+""""""""""""""""""""""""""
 
 """""""""""""""""
-" ncm2 settings "
+" ale settings "
 """""""""""""""""
-" enable ncm2 for all buffers
-" autocmd BufEnter * call ncm2#enable_for_buffer()
 
-" IMPORTANT: :help Ncm2PopupOpen for more information
-"set completeopt=noinsert,menuone,noselect
-
-" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-"inoremap <c-c> <ESC>
-
-" Use <TAB> to select the popup menu:
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+let g:ale_linters = {
+  \ 'scala': [ 'sbtserver', 'scalac','metals-vim' ] ,
+  \ 'python': ['pylint', 'flake8'],
+  \ }
 
 " python3
-let g:python3_host_prog="/usr/local/bin/python3"
+let g:python3_host_prog='/usr/local/bin/python3'
 
-"TODO:
-"add support for tabbing autocomplete and paths
-"""""""""""""""""
-" ncm2 settings done"
-"""""""""""""""""
+"completion
+let g:ale_completion_enabled = 1
+set omnifunc=ale#completion#OmniFunc
+
+"""""""""""""""""""""
+" ale settings  done"
+"""""""""""""""""""""
 
 """"""""""""""""""""
 " airline settings "
@@ -169,42 +220,36 @@ nnoremap gB :bnext<CR>
 nnoremap gb :bprevious<CR>
 nnoremap B :bnext<CR>
 
-"straigh tabs
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
-
 " unique_tail
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
-""""""""""""""""""""
-" airline settings done "
-""""""""""""""""""""
+"""""""""""""""""""""""""
+" airline settings  done"
+"""""""""""""""""""""""""
 
-"folding on syntax
-set foldmethod=syntax
-
-"netrw toggle 
-" Adjust size: [N]Lexplore
-let g:netrw_liststyle=3
-let g:NetrwIsOpen=0
-function! ToggleNetrw()
-    if g:NetrwIsOpen
-        let g:NetrwIsOpen=0
-        autocmd FileType netrw setl bufhidden=delete
-    else
-        normal <c-l>
-        let g:NetrwIsOpen=1
-        silent 30Lexplore
-    endif
+""""""""""""""""""""
+" Git settings "
+""""""""""""""""""""
+function! Gitgutter()
+  :GitGutterToggle
+  :GitGutterSignsToggle
+  :GitGutterLineHighlightsToggle
 endfunction
 
-" Add your own mapping. For example:
-noremap <silent> <C-n> :call ToggleNetrw()<CR>
+let g:gitgutter_enabled = 0
 
-" spelling remaps
-nnoremap Ss :set spell spelllang=en_us<CR>
-nnoremap ss :set nospell<CR>
-nnoremap  zz z=
+nnoremap <silent> gG :exec Gitgutter()<CR> 
+
+""""""""""""""""""""
+" Git settings done"
+""""""""""""""""""""
+
+"supertab
+let g:SuperTabContextDefaultCompletionType = '<c-n>'
+let g:SuperTabDefaultCompletionType = 'context'
+
+" Add your own mapping. For example:
+map <C-n> :NERDTreeToggle<CR>
 
 "vimtex
 let g:vimtex_fold_enabled = 1
@@ -213,3 +258,10 @@ let g:vimtex_fold_manual = 1
 "FastFold
 let g:fastfold_savehook = 1
 let g:tex_fold_enabled = 1
+
+"colorscheme
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+colorscheme molokai
+
+"vim-scala
+au BufRead,BufNewFile *.sbt set filetype=scala
