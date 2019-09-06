@@ -63,8 +63,14 @@ fi
 add_to_path "$GOPATH"bin
 add_to_path "$GOROOT"bin
 
+#
+add_to_path "$HOME/.cargo/bin"
+
 #supcom
-test -d "~/Games" || export INSTALL4J_JAVA_HOME=~/Games/javaFafClient/jdk-10.0.2
+if [ ! -z $MAC ]
+then
+  test -d "~/Games" || export INSTALL4J_JAVA_HOME=~/Games/javaFafClient/jdk-10.0.2
+fi
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.

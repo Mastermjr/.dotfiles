@@ -13,12 +13,21 @@ Syncing my Dotfiles
 chsh -s /bin/zsh
 ``s
 e``
+
 2. ./sync.sh
+
 3. ```shell 
 sudo apt install neovim 
 brew install neovim
 ```
+
+
 4. python3 -m pip install pynvim
+
+5. coc.nvim:   
+  https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvim
+  - node: brew install node
+
 5. Linters: 
   - sbt/scalac (apt/brew)
   ``` shell
@@ -26,10 +35,14 @@ brew install neovim
   sudo apt install scala sbt
   ```
   - pylint,flake8 (python)
-  - vint (python)
+  - vint (in python) (for vim)
   ``` shell
   pip3 isntall pylint flake8 vim-vint
   ```
+  - latex:
+    https://texlab.netlify.com  
+    - node: allready done! 
+    - rust: brew install rust
 
 #sMAC:
 emap cmd to ctrl-a: https://superuser.com/questions/259614/bind-tmux-prefix-to-os-x-cmd-key-or-any-other-binding

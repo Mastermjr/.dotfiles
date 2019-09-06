@@ -49,6 +49,23 @@ if [! -d $HOME/.config/nvim/ ];
     echo "MAY NEED TO REPLACE CURRENT NVIM"
 fi
 
+#coc-nvim config
+echo '{
+  "languageserver": {
+    "metals": {
+      "command": "metals-vim",
+      "rootPatterns": ["build.sbt"],
+      "filetypes": ["scala", "sbt"]
+    },
+     "latex": {
+    "command": "$HOME/.dotfiles/texlab/target/release/texlab",
+    "ignoredRootPaths": ["~"],
+    "filetypes": ["tex", "bib", "plaintex", "context"]
+    }
+  }
+}' > $HOME/nvim/coc-settings.json
+
+
 #update vim-plug
 nvim -c ":PlugUpgrade" -c q
 
@@ -66,6 +83,9 @@ ln -s $BASE/zshrc $HOME/.zshrc
 
 #tmux
 ln -s $BASE/tmux.conf $HOME/.tmux.conf
+
+#rust
+
 
 #GO dir setups
 if [ ! -d "${GOPATH}" ];
