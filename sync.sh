@@ -42,7 +42,7 @@ if [ ! -d vim/tmp/ ];
 fi
 
 #nvim config
-if [! -d $HOME/.config/nvim/ ];
+if [ ! -d $HOME/.config/nvim/ ];
   then
     ln -sn $BASE/nvim/ $HOME/.config/nvim/
   else
@@ -79,6 +79,11 @@ if [ ! -d vim/pack/ ];
 fi
 
 #zsh
+if [ ! -d $BASE/linux_sync/bin/ ];
+  then
+    mkdir $BASE/linux_sync/bin/
+fi
+
 ln -s $BASE/zshrc $HOME/.zshrc
 
 #tmux
