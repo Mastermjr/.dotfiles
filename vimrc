@@ -21,6 +21,7 @@ call plug#begin('~/.dotfiles/vim/pack/')
 
   "autocomplete
   Plug 'ycm-core/YouCompleteMe'
+  Plug 'SirVer/ultisnips'
 
   "utility
   Plug 'https://github.com/scrooloose/nerdtree'
@@ -124,10 +125,8 @@ nnoremap  zz z=
 """""""""""""""""""""""""
 
 """""""""""""""""
-" ycm settings "
+" ycm/ultisnip settings "
 """""""""""""""""
-
-
 
 """""""""""""""""""""
 " ycm settings done "

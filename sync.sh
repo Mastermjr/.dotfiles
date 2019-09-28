@@ -4,7 +4,7 @@
 BASE=$HOME/.dotfiles
 
 #setup gitconfig
-ln -s $BASE/gitconfig $HOME/.gitconfig
+ln -sf $BASE/gitconfig $HOME/.gitconfig
 
 # setup shortcuts
 if [ ! -f $HOME/.scrc ];
@@ -12,15 +12,15 @@ if [ ! -f $HOME/.scrc ];
   touch $HOME/.scrc
 fi 
 #setup linux_sync dir
-if [ ! -f ./linux_sync ];
+if [ ! -d ./linux_sync ];
   then
   mkdir linux_sync
   touch ./linux_sync/local_alias
 fi
 
 #vim
-ln -s $BASE/vimrc $HOME/.vimrc
-ln -sn $BASE/vim/ $HOME/.vim
+ln -sf $BASE/vimrc $HOME/.vimrc
+ln -sf $BASE/vim/ $HOME/.vim
 
 #make vim dirs
 if [ ! -f $HOME/.viminfo ];
@@ -29,7 +29,7 @@ if [ ! -f $HOME/.viminfo ];
   rm $HOME/.viminfo
   ln -sn $BASE/vim/viminfo $HOME/.viminfo
   else
-  ln -sn $BASE/vim/viminfo $HOME/.viminfo
+  ln -sf $BASE/vim/viminfo $HOME/.viminfo
 fi
 if [ ! -d vim/undo/ ];
   then
@@ -45,7 +45,7 @@ if [ ! -d $HOME/.config/nvim/ ];
   then
     ln -sn $BASE/nvim/ $HOME/.config/nvim/
   else
-    echo "MAY NEED TO REPLACE CURRENT NVIM"
+    echo "NVIM DIRECTORY EXISTS"
 fi
 
 #update vim-plug
@@ -65,10 +65,10 @@ if [ ! -d $BASE/linux_sync/bin/ ];
     mkdir $BASE/linux_sync/bin/
 fi
 
-ln -s $BASE/zshrc $HOME/.zshrc
+ln -sf $BASE/zshrc $HOME/.zshrc
 
 #tmux
-ln -s $BASE/tmux.conf $HOME/.tmux.conf
+ln -sf $BASE/tmux.conf $HOME/.tmux.conf
 
 #rust
 
