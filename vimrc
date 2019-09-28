@@ -13,16 +13,14 @@ call plug#begin('~/.dotfiles/vim/pack/')
   Plug 'tomasr/molokai'
 
   "syntax and linting
-  Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
   Plug 'https://github.com/tpope/vim-surround'
-  "Plug 'https://github.com/dense-analysis/ale'
+  Plug 'https://github.com/dense-analysis/ale'
 
   "language
   Plug 'https://github.com/lervag/vimtex'
-  Plug 'derekwyatt/vim-scala'
 
-  "tab
-  "Plug 'ervandew/supertab'
+  "autocomplete
+  Plug 'ycm-core/YouCompleteMe'
 
   "utility
   Plug 'https://github.com/scrooloose/nerdtree'
@@ -100,110 +98,62 @@ set viminfo+=n~/.vim/viminfo
 
 "add set list
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
-noremap L :set list<CR>                           
-noremap Ll :set list!<CR>
+noremap <F3> Ll :set list!<CR>
 
 "folding on syntax
 set foldmethod=syntax
 
 " spelling remaps
-nnoremap Ss :set spell spelllang=en_us<CR>
-nnoremap ss :set nospell<CR>
+nnoremap <silent> ss :call SpellToggle()<cr>
+
+let g:NoSpell=1
+
+function! SpellToggle()
+    if g:NoSpell
+        let g:NoSpell=0
+        set spell spelllang=en_us
+    else
+        let g:NoSpell=1
+        set nospell
+    endif
+endfunction
+
 nnoremap  zz z=
 """""""""""""""""""""""""
 " builtin settings done "
 """""""""""""""""""""""""
 
+"""""""""""""""""
+" ycm settings "
+"""""""""""""""""
+
+
+
 """""""""""""""""""""
-" coc-nvim settings "
+" ycm settings done "
 """""""""""""""""""""
-" coc
-let g:airline#extensions#coc#enabled = 1
 
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
-
-" Better display for messages
-set cmdheight=2
-
-" Use <c-space> for trigger completion.
-inoremap <silent><expr> <C-n> coc#refresh()
-
-" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[c` and `]c` for navigate diagnostics
-nmap <silent> <C-j> <Plug>(coc-diagnostic-prev)
-nmap <silent> <C-k> <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Remap for do codeAction of current line
-nmap <leader>ac <Plug>(coc-codeaction)
-
-" Remap for do action format
-nnoremap <silent> F :call CocAction('format')<CR>
-
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Show all diagnostics
-nnoremap <silent> <space>d  :<C-u>CocList diagnostics<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-""""""""""""""""""""""""""
-" coc-nvim settings  done"
-""""""""""""""""""""""""""
 
 """""""""""""""""
 " ale settings "
 """""""""""""""""
 
 let g:ale_linters = {
-  \ 'scala': [ 'sbtserver', 'scalac','metals-vim' ] ,
-  \ 'python': ['pylint', 'flake8'],
+  \ 'scala': [ 'sbtserver', 'scalac' ] ,
+  \ 'python': [''],
+  \ 'tex': ['texlab'],
   \ }
 
 " python3
 let g:python3_host_prog='/usr/local/bin/python3'
 
+"latex
+let home = $HOME
+let g:ale_tex_texlab_executable = home.'/.dotfiles/texlab/target/release/texlab'
+
 "completion
-let g:ale_completion_enabled = 1
-set omnifunc=ale#completion#OmniFunc
+"let g:ale_completion_enabled = 1
+"set omnifunc=ale#completion#OmniFunc
 
 """""""""""""""""""""
 " ale settings  done"
@@ -244,16 +194,17 @@ nnoremap <silent> gG :exec Gitgutter()<CR>
 " Git settings done"
 """"""""""""""""""""
 
-"supertab
-let g:SuperTabContextDefaultCompletionType = '<c-n>'
-let g:SuperTabDefaultCompletionType = 'context'
-
 " Add your own mapping. For example:
 map <C-n> :NERDTreeToggle<CR>
 
-"vimtex
-let g:vimtex_fold_enabled = 1
+"tex
+let g:vimtex_quickfix_latexlog = {
+      \'general': 0,
+      \}
+let g:tex_flavor = "latex"
+let g:vimex_fold_enabled = 1
 let g:vimtex_fold_manual = 1
+let g:vimtex_compiler_progname = 'nvr'
 
 "FastFold
 let g:fastfold_savehook = 1

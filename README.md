@@ -43,6 +43,8 @@ brew install neovim
     https://texlab.netlify.com  
     - node: allready done! 
     - rust: brew install rust
+    - https://github.com/lervag/vimtex/wiki/introduction#neovim
+    - pip3 install --user neovim-remote
 
 #sMAC:
 emap cmd to ctrl-a: https://superuser.com/questions/259614/bind-tmux-prefix-to-os-x-cmd-key-or-any-other-binding

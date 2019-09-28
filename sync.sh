@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SCRIPT TO SYNC FILES
-BASE=~/.dotfiles
+BASE=$HOME/.dotfiles
 
 #setup gitconfig
 ln -s $BASE/gitconfig $HOME/.gitconfig
@@ -10,8 +10,7 @@ ln -s $BASE/gitconfig $HOME/.gitconfig
 if [ ! -f $HOME/.scrc ];
   then
   touch $HOME/.scrc
-fi
-
+fi 
 #setup linux_sync dir
 if [ ! -f ./linux_sync ];
   then
@@ -42,40 +41,22 @@ if [ ! -d vim/tmp/ ];
 fi
 
 #nvim config
-if [! -d $HOME/.config/nvim/ ];
+if [ ! -d $HOME/.config/nvim/ ];
   then
     ln -sn $BASE/nvim/ $HOME/.config/nvim/
   else
     echo "MAY NEED TO REPLACE CURRENT NVIM"
 fi
 
-#coc-nvim config
-echo '{
-  "languageserver": {
-    "metals": {
-      "command": "metals-vim",
-      "rootPatterns": ["build.sbt"],
-      "filetypes": ["scala", "sbt"]
-    },
-     "latex": {
-    "command": "$HOME/.dotfiles/texlab/target/release/texlab",
-    "ignoredRootPaths": ["~"],
-    "filetypes": ["tex", "bib", "plaintex", "context"]
-    }
-  }
-}' > $HOME/nvim/coc-settings.json
-
-
 #update vim-plug
-nvim -c ":PlugUpgrade" -c q
-
 if [ ! -d vim/pack/ ];
   then
     mkdir $BASE/vim/pack/
     #generate helptags and install plugins
-    nvim -c ":PlugInstall" -c q
+    nvim --headless +PlugInstall +q +q
   else
-    nvim -c ":PlugUpdate" -c q
+  nvim --headless +PlugUpgrade +q +q
+  nvim --headless +PlugUpdate +q +q
 fi
 
 #zsh

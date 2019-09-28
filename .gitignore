@@ -5,3 +5,4 @@ vim/pack/*
 vim/.netrwhist
 vim/viminfo
 linux_sync/
+nvim/coc-settings.json
