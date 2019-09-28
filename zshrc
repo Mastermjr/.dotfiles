@@ -149,7 +149,6 @@ source ~/.dotfiles/linux_sync/local_alias
 #check for linux setx
 if [ ! -z $MAC ];
 then
-  echo "ASDFAFS"
   if xset q &>/dev/null; then
     setxkbmap -option caps:swapescape
   fi

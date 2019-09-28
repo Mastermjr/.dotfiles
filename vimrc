@@ -188,6 +188,7 @@ endfunction
 
 let g:gitgutter_enabled = 0
 
+"TODO: fix this!
 nnoremap <silent> gG :exec Gitgutter()<CR> 
 
 """"""""""""""""""""
