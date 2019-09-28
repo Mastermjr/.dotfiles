@@ -1219,8 +1219,17 @@ function! s:spawn(name, cmd, opts)
   let job = { 'name': a:name, 'running': 1, 'error': 0, 'lines': [''],
             \ 'new': get(a:opts, 'new', 0) }
   let s:jobs[a:name] = job
+<<<<<<< Updated upstream
   let cmd = has_key(a:opts, 'dir') ? s:with_cd(a:cmd, a:opts.dir, 0) : a:cmd
   let argv = s:is_win ? ['cmd', '/s', '/c', '"'.cmd.'"'] : ['sh', '-c', cmd]
+=======
+  let cmd = has_key(a:opts, 'dir') ? s:with_cd(a:cmd, a:opts.dir) : a:cmd
+  if !empty(job.batchfile)
+    call writefile(["@echo off\r", cmd . "\r"], job.batchfile)
+    let cmd = s:shellesc(job.batchfile)
+  endif
+  let argv = add(s:is_win ? ['cmd', '/c'] : ['sh', '-c'], cmd)
+>>>>>>> Stashed changes
 
   if s:nvim
     call extend(job, {
@@ -2047,7 +2056,13 @@ function! s:system(cmd, ...)
     let [sh, shellcmdflag, shrd] = s:chsh(1)
     let cmd = a:0 > 0 ? s:with_cd(a:cmd, a:1) : a:cmd
     if s:is_win
+<<<<<<< Updated upstream
       let [batchfile, cmd] = s:batchfile(cmd)
+=======
+      let batchfile = tempname().'.bat'
+      call writefile(["@echo off\r", cmd . "\r"], batchfile)
+      let cmd = s:shellesc(batchfile)
+>>>>>>> Stashed changes
     endif
     return system(cmd)
   finally
