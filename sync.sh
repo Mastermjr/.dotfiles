@@ -60,6 +60,11 @@ if [ ! -d vim/pack/ ];
 fi
 
 #zsh
+if [ ! -d $BASE/linux_sync/bin/ ];
+  then
+    mkdir $BASE/linux_sync/bin/
+fi
+
 ln -s $BASE/zshrc $HOME/.zshrc
 
 #tmux

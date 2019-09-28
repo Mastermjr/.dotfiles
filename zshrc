@@ -22,6 +22,8 @@ function check_os (){
   esac
 }
 
+check_os
+
 #BASH PATH
 add_to_path $HOME/bin /usr/local/bin 
 
@@ -52,10 +54,10 @@ add_to_path $HOME/.gem/ruby/2.5.0/bin
 add_to_path GOPATH=$HOME/go/
 
 # setup root
-if [ -z $MAC ]
+if [ ! -z $MAC ]
 then
   export GOROOT="$(brew --prefix golang)/libexec"
-elif $LINUX
+elif [ ! -z $LINUX ]
 then
   export GOROOT=/usr/local/go/
 fi
@@ -147,6 +149,7 @@ source ~/.dotfiles/linux_sync/local_alias
 #check for linux setx
 if [ ! -z $MAC ];
 then
+  echo "ASDFAFS"
   if xset q &>/dev/null; then
     setxkbmap -option caps:swapescape
   fi
