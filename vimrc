@@ -18,9 +18,14 @@ call plug#begin('~/.dotfiles/vim/pack/')
 
   "language
   Plug 'https://github.com/lervag/vimtex'
+  Plug 'honza/vim-snippets'
 
   "autocomplete
   Plug 'ycm-core/YouCompleteMe'
+  "Plug 'https://github.com/davidhalter/jedi'
+  "Plug 'https://github.com/davidhalter/jedi-vim'
+
+  "snippets
   Plug 'SirVer/ultisnips'
 
   "utility
@@ -59,7 +64,7 @@ if has('lautocmd')
   augroup vimrcEx
   au!
   " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+  autocmd FileType text setlocal textwidth=80
   augroup END
 else
   set autoindent		" always set autoindenting on
@@ -125,13 +130,60 @@ nnoremap  zz z=
 """""""""""""""""""""""""
 
 """""""""""""""""
-" ycm/ultisnip settings "
+" ycm/jedi settings "
 """""""""""""""""
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+
+"preview-window functions
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_completion=1
+
+"let g:ycm_semantic_triggers = {
+"\   'python': ['.', '(' ],
+"\ }
+
+"function params:
+"let g:jedi#show_call_signatures = "0"
+"let g:jedi#completions_command = "<C-N>"
 
 """""""""""""""""""""
-" ycm settings done "
+" ycm/jedi settings done "
 """""""""""""""""""""
 
+""""""""""""""""""""
+"ultisnips settings "
+""""""""""""""""""""
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger = "<tab>"
+  let g:UltiSnipsJumpBackwardTrigger = "<C-j>"
+  
+""""""""""""""""""""""""
+"ultisnips settings done"
+""""""""""""""""""""""""
+
+"""""""""""""""""""
+" vimtex settings "
+"""""""""""""""""""
+
+let g:vimtex_quickfix_latexlog = {
+      \'general': 0,
+      \}
+let g:tex_flavor = "latex"
+let g:vimex_fold_enabled = 1
+let g:vimtex_fold_manual = 1
+let g:vimtex_compiler_progname = 'nvr'
+
+" fast typing//conceal
+" https://castel.dev/post/lecture-notes-1/
+"let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
+"""""""""""""""""""""""
+" vimtex settings done"
+"""""""""""""""""""""""
 
 """""""""""""""""
 " ale settings "
@@ -176,9 +228,9 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 " airline settings  done"
 """""""""""""""""""""""""
 
-""""""""""""""""""""
+""""""""""""""""
 " Git settings "
-""""""""""""""""""""
+""""""""""""""""
 function! Gitgutter()
   :GitGutterToggle
   :GitGutterSignsToggle
@@ -197,14 +249,8 @@ nnoremap <silent> gG :exec Gitgutter()<CR>
 " Add your own mapping. For example:
 map <C-n> :NERDTreeToggle<CR>
 
-"tex
-let g:vimtex_quickfix_latexlog = {
-      \'general': 0,
-      \}
-let g:tex_flavor = "latex"
-let g:vimex_fold_enabled = 1
-let g:vimtex_fold_manual = 1
-let g:vimtex_compiler_progname = 'nvr'
+
+
 
 "FastFold
 let g:fastfold_savehook = 1
