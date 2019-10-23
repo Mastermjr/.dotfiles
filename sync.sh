@@ -1,27 +1,26 @@
 #!/bin/bash
 
 #SCRIPT TO SYNC FILES
-BASE=~/.dotfiles
+BASE=$HOME/.dotfiles
 
 #setup gitconfig
-ln -s $BASE/gitconfig $HOME/.gitconfig
+ln -sf $BASE/gitconfig $HOME/.gitconfig
 
 # setup shortcuts
 if [ ! -f $HOME/.scrc ];
   then
   touch $HOME/.scrc
-fi
-
+fi 
 #setup linux_sync dir
-if [ ! -f ./linux_sync ];
+if [ ! -d ./linux_sync ];
   then
   mkdir linux_sync
   touch ./linux_sync/local_alias
 fi
 
 #vim
-ln -s $BASE/vimrc $HOME/.vimrc
-ln -sn $BASE/vim/ $HOME/.vim
+ln -sf $BASE/vimrc $HOME/.vimrc
+ln -sf $BASE/vim/ $HOME/.vim
 
 #make vim dirs
 if [ ! -f $HOME/.viminfo ];
@@ -30,7 +29,7 @@ if [ ! -f $HOME/.viminfo ];
   rm $HOME/.viminfo
   ln -sn $BASE/vim/viminfo $HOME/.viminfo
   else
-  ln -sn $BASE/vim/viminfo $HOME/.viminfo
+  ln -sf $BASE/vim/viminfo $HOME/.viminfo
 fi
 if [ ! -d vim/undo/ ];
   then
@@ -46,20 +45,22 @@ if [ ! -d $HOME/.config/nvim/ ];
   then
     ln -s $BASE/nvim/ $HOME/.config/nvim/
   else
-    echo "MAY NEED TO REPLACE CURRENT NVIM"
+    echo "NVIM DIRECTORY EXISTS"
 fi
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2f076795bb57fcf880a8be21fc21f386fb171844
 #update vim-plug
-nvim -c ":PlugUpgrade" -c q
-
 if [ ! -d vim/pack/ ];
   then
     mkdir $BASE/vim/pack/
     #generate helptags and install plugins
-    nvim -c ":PlugInstall" -c q
+    nvim --headless +PlugInstall +q +q
   else
-    nvim -c ":PlugUpdate" -c q
+  nvim --headless +PlugUpgrade +q +q
+  nvim --headless +PlugUpdate +q +q
 fi
 
 #zsh
@@ -68,10 +69,10 @@ if [ ! -d $BASE/linux_sync/bin/ ];
     mkdir $BASE/linux_sync/bin/
 fi
 
-ln -s $BASE/zshrc $HOME/.zshrc
+ln -sf $BASE/zshrc $HOME/.zshrc
 
 #tmux
-ln -s $BASE/tmux.conf $HOME/.tmux.conf
+ln -sf $BASE/tmux.conf $HOME/.tmux.conf
 
 #rust
 
