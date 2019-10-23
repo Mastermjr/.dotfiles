@@ -44,26 +44,10 @@ fi
 #nvim config
 if [ ! -d $HOME/.config/nvim/ ];
   then
-    ln -sn $BASE/nvim/ $HOME/.config/nvim/
+    ln -s $BASE/nvim/ $HOME/.config/nvim/
   else
     echo "MAY NEED TO REPLACE CURRENT NVIM"
 fi
-
-#coc-nvim config
-echo '{
-  "languageserver": {
-    "metals": {
-      "command": "metals-vim",
-      "rootPatterns": ["build.sbt"],
-      "filetypes": ["scala", "sbt"]
-    },
-     "latex": {
-    "command": "$HOME/.dotfiles/texlab/target/release/texlab",
-    "ignoredRootPaths": ["~"],
-    "filetypes": ["tex", "bib", "plaintex", "context"]
-    }
-  }
-}' > $HOME/nvim/coc-settings.json
 
 
 #update vim-plug
