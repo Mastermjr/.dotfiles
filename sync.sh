@@ -43,11 +43,15 @@ fi
 #nvim config
 if [ ! -d $HOME/.config/nvim/ ];
   then
-    ln -sn $BASE/nvim/ $HOME/.config/nvim/
+    ln -s $BASE/nvim/ $HOME/.config/nvim/
   else
     echo "NVIM DIRECTORY EXISTS"
 fi
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 2f076795bb57fcf880a8be21fc21f386fb171844
 #update vim-plug
 if [ ! -d vim/pack/ ];
   then

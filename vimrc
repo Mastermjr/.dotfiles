@@ -185,6 +185,7 @@ inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 " vimtex settings done"
 """""""""""""""""""""""
 
+
 """""""""""""""""
 " ale settings "
 """""""""""""""""
