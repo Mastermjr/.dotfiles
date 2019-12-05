@@ -1,3 +1,5 @@
 [user]
 	email = mastermjr@protonmail.com
 	name = mastermjr
+[core]
+	editor = nvim
