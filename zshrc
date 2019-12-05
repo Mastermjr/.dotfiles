@@ -24,6 +24,9 @@ function check_os (){
 
 check_os
 
+#RESET PATH
+export PATH="/usr/local/bin/:/usr/bin/:/bin/:/usr/bin/:/sbin/"
+
 #BASH PATH
 add_to_path $HOME/bin /usr/local/bin 
 
@@ -144,7 +147,7 @@ alias add-alias="vim ~/.dotfiles/linux_sync/local_alias; zsh-source"
 alias vim="nvim"
 
 #add_local_alias
-source ~/.dotfiles/linux_sync/local_alias 
+source $HOME/.dotfiles/linux_sync/local_alias 
 
 #check for linux setx
 if [ -z $MAC ];
