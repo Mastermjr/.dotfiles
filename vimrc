@@ -42,6 +42,9 @@ call plug#helptags()
 " builtin settings" 
 """""""""""""""""""
 
+"fix background issue
+set background=dark
+
 "backup and undo!
 if has('vms')
   set nobackup		" do not keep a backup file, use versions instead
@@ -304,7 +307,7 @@ let g:fastfold_savehook = 1
 let g:tex_fold_enabled = 1
 
 "colorscheme
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme molokai
 
 "vim-scala

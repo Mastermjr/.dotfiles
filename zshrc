@@ -65,11 +65,14 @@ fi
 add_to_path "$GOPATH"bin
 add_to_path "$GOROOT"bin
 
-#
+# rust
 add_to_path "$HOME/.cargo/bin"
 
+# java:
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+
 #supcom
-test -d "$HOME/FAF/" || export INSTALL4J_JAVA_HOME=~/FAF/javaFafClient/jdk-10.0.2
+#test -d "$HOME/FAF/" || export INSTALL4J_JAVA_HOME=~/FAF/javaFafClient/jdk-10.0.2
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
