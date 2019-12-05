@@ -25,16 +25,20 @@ function check_os (){
 check_os
 
 #RESET PATH
-export PATH="/usr/local/bin/:/usr/bin/:/bin/:/usr/bin/:/sbin/"
+export PATH="/usr/local/bin/:/usr/sbin/:/bin/:/usr/bin/:/sbin/"
+
+#Latex
+add_to_path "/Library/TeX/texbin/"
 
 #BASH PATH
-add_to_path $HOME/bin /usr/local/bin 
+add_to_path $HOME/bin/ /usr/local/bin/ 
 
 #.local/bin PATH
 if [ ! -z $MAC ]
 then
-  add_to_path $HOME/.local/bin
+  add_to_path $HOME/.local/bin/
 fi
+
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.dotfiles/oh-my-zsh
