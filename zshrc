@@ -34,9 +34,10 @@ add_to_path "/Library/TeX/texbin/"
 add_to_path $HOME/bin/ /usr/local/bin/ 
 
 #.local/bin PATH
-if [ ! -z $MAC ]
+if [ $LINUX ]
 then
   add_to_path $HOME/.local/bin/
+  add_to_path $HOME/go/bin/
 fi
 
 
@@ -58,13 +59,13 @@ fi
 add_to_path $HOME/.gem/ruby/2.5.0/bin
 
 #export path to go  and make dir
-add_to_path GOPATH=$HOME/go/
+GOPATH=$HOME/go/
 
 # setup root
-if [ ! -z $MAC ]
+if [ $MAC ]
 then
   export GOROOT="$(brew --prefix golang)/libexec"
-elif [ ! -z $LINUX ]
+elif [ $LINUX ]
 then
   export GOROOT=/usr/local/go/
 fi
