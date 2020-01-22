@@ -125,7 +125,7 @@ ZSH_CUSTOM=$HOME/.dotfiles/custom-oh-my-zsh/
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # zsh-syntax-highlighting must be last
-#plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
