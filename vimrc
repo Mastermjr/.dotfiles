@@ -185,15 +185,15 @@ let g:tex_conceal='abdmg'
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 "force to use pdflatex
-let g:vimtex_compiler_latexrun_engines = {
-    \ 'background' : 1,
-    \ 'build_dir' : '',
-    \ 'options' : [
-    \   '-verbose-cmds',
-    \   '--latex-args="-synctex=1"',
-    \   '-pdf', 
-    \ ],
-    \}
+"let g:vimtex_compiler_latexrun_engines = {
+"    \ 'background' : 1,
+"    \ 'build_dir' : '',
+"    \ 'options' : [
+"    \   '-verbose-cmds',
+"    \   '--latex-args="-synctex=1"',
+"    \   '-pdf', 
+"    \ ],
+"    \}
 
 """""""""""""""""""""""
 " vimtex settings done"

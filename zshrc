@@ -27,11 +27,11 @@ check_os
 #RESET PATH
 export PATH="/usr/local/bin/:/usr/sbin/:/bin/:/usr/bin/:/sbin/"
 
-#Latex
-add_to_path "/Library/TeX/texbin/"
-
 #BASH PATH
-add_to_path $HOME/bin/ /usr/local/bin/ 
+if [ ! -z $LINUX ]
+  then
+  add_to_path $HOME/bin/
+fi
 
 #.local/bin PATH
 if [ ! -z $MAC ]
@@ -46,13 +46,7 @@ export ZSH=$HOME/.dotfiles/oh-my-zsh
 #export path to zsh scripts
 add_to_path $HOME/.dotfiles/bin
 
-if [ ! -z "$(ls $HOME/.dotfiles/linux_sync/bin/)" ];
-then
- for s in $HOME/.dotfiles/linux_sync/bin/*;
- do
-  source $s  
- done
-fi
+add_to_path $HOME/.dotfiles/linux_sync/bin/
 
 #export path to ruby 
 add_to_path $HOME/.gem/ruby/2.5.0/bin
@@ -76,8 +70,10 @@ add_to_path "$GOROOT"bin
 add_to_path "$HOME/.cargo/bin"
 
 # java:
-export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
-
+#if [ ! -z $LINUX ]
+#then
+#  export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+#fi
 #supcom
 #test -d "$HOME/FAF/" || export INSTALL4J_JAVA_HOME=~/FAF/javaFafClient/jdk-10.0.2
 
@@ -129,7 +125,7 @@ ZSH_CUSTOM=$HOME/.dotfiles/custom-oh-my-zsh/
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # zsh-syntax-highlighting must be last
-plugins=(git zsh-syntax-highlighting)
+#plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
