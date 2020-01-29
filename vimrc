@@ -1,12 +1,13 @@
-" Get the defaults that most users want.
-"source $VIMRUNTIME/.vim
+"""""""""""""""""""
+"vimplug settings " 
+"""""""""""""""""""
 
 "plugin loading vim-plug
 call plug#begin('~/.dotfiles/vim/pack/')
 
   "git
-  Plug 'https://github.com/tpope/vim-fugitive.git'
-  Plug 'airblade/vim-gitgutter'
+  "Plug 'https://github.com/tpope/vim-fugitive.git'
+  "Plug 'airblade/vim-gitgutter'
 
   "scheme
   Plug 'vim-airline/vim-airline'
@@ -16,17 +17,15 @@ call plug#begin('~/.dotfiles/vim/pack/')
   Plug 'https://github.com/tpope/vim-surround'
   Plug 'https://github.com/dense-analysis/ale'
 
-  "language
-  Plug 'https://github.com/lervag/vimtex'
-  Plug 'honza/vim-snippets'
-
   "autocomplete
   Plug 'ycm-core/YouCompleteMe'
-  "Plug 'https://github.com/davidhalter/jedi'
-  "Plug 'https://github.com/davidhalter/jedi-vim'
+
+  "language
+  Plug 'https://github.com/lervag/vimtex'
 
   "snippets
   Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
 
   "utility
   Plug 'https://github.com/scrooloose/nerdtree'
@@ -37,6 +36,10 @@ call plug#end()
 
 "update helptags
 call plug#helptags() 
+
+"""""""""""""""""""""""
+"vimplug settings done" 
+"""""""""""""""""""""""
 
 """""""""""""""""""
 " builtin settings" 
@@ -80,18 +83,15 @@ filetype plugin on          " plugins are enabled
 "syntax on
 syntax on
 
-"remap ctrl-w to ctrl-[letter]
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
 " show existing tab with 4 spaces width
 set tabstop=2
+
 " when indenting with '>', use 4 spaces width
 set shiftwidth=2
+
 " On pressing tab, insert 4 spaces
 set expandtab
+
 "turn on autoindent
 set autoindent
 
@@ -132,34 +132,34 @@ nnoremap  zz z=
 " builtin settings done "
 """""""""""""""""""""""""
 
-"""""""""""""""""
-" ycm/jedi settings "
-"""""""""""""""""
+"""""""""""""""""""""""
+" completion settings "
+"""""""""""""""""""""""
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
 "preview-window functions
 let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
-"let g:ycm_semantic_triggers = {
-"\   'python': ['.', '(' ],
-"\ }
+let g:ycm_semantic_triggers = {
+\   'python': ['.', '(' ],
+\ }
 
 "function params:
-"let g:jedi#show_call_signatures = "0"
-"let g:jedi#completions_command = "<C-N>"
+let g:jedi#show_call_signatures = "0"
+let g:jedi#completions_command = "<C-N>"
 
-"""""""""""""""""""""
-" ycm/jedi settings done "
-"""""""""""""""""""""
+"""""""""""""""""""""""
+" completion settings "
+"""""""""""""""""""""""
 
 """"""""""""""""""""
 "ultisnips settings "
 """"""""""""""""""""
-  let g:UltiSnipsExpandTrigger="<tab>"
-  let g:UltiSnipsJumpForwardTrigger = "<tab>"
-  let g:UltiSnipsJumpBackwardTrigger = "<C-j>"
+"  let g:UltiSnipsExpandTrigger="<tab>"
+"  let g:UltiSnipsJumpForwardTrigger = "<tab>"
+"  let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
   
 """"""""""""""""""""""""
 "ultisnips settings done"
@@ -266,7 +266,7 @@ nnoremap <silent> gG :exec Gitgutter()<CR>
 """""""""""""""""""""""""
 
 " Add your own mapping. For example:
-map <C-n> :NERDTreeToggle<CR>
+map <C-h> :NERDTreeToggle<CR>
 
 "FastFold
 let g:fastfold_savehook = 1
@@ -275,6 +275,3 @@ let g:tex_fold_enabled = 1
 "colorscheme
 "let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme molokai
-
-"vim-scala
-au BufRead,BufNewFile *.sbt set filetype=scala
