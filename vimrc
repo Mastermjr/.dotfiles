@@ -11,14 +11,14 @@ call plug#begin('~/.dotfiles/vim/pack/')
 
   "scheme
   Plug 'vim-airline/vim-airline'
-  Plug 'tomasr/molokai'
+  Plug 'crusoexia/vim-monokai'
 
   "syntax and linting
   Plug 'https://github.com/tpope/vim-surround'
   Plug 'https://github.com/dense-analysis/ale'
 
   "autocomplete
-  Plug 'ycm-core/YouCompleteMe'
+  "Plug 'ycm-core/YouCompleteMe'
 
   "language
   Plug 'https://github.com/lervag/vimtex'
@@ -273,5 +273,6 @@ let g:fastfold_savehook = 1
 let g:tex_fold_enabled = 1
 
 "colorscheme
-"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colorscheme molokai
+set t_Co=256  " vim-monokai now only support 256 colours in terminal.
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+colorscheme monokai

@@ -149,14 +149,9 @@ alias add-alias="vim ~/.dotfiles/linux_sync/local_alias; zsh-source"
 
 #add_local_alias
 source $HOME/.dotfiles/linux_sync/local_alias 
+alias tmux="tmux -2"
 
 #check for linux setx
-if [ -z $MAC ];
-then
-  if xset q &>/dev/null; then
-    setxkbmap -option caps:swapescape
-  fi
-fi
 
 #shortcuts function
 #also have pushd (move to dir) dir (list)  popd (move back to old dir)
