@@ -1,4 +1,17 @@
 #!/bin/bash
+function check_os (){
+  os="$(uname -a | awk '{print $1}')"
+  case $os in
+    "Linux")
+      export LINUX=1
+    ;;
+    "Darwin")
+      export MAC=1
+    ;;
+  esac
+}
+
+check_os
 
 #SCRIPT TO SYNC FILES
 BASE=$HOME/.dotfiles
@@ -19,6 +32,7 @@ if [ ! -d ./linux_sync ];
 fi
 
 #vim
+#TODO: switches on linux: target, link_name 
 ln -sf $BASE/vimrc $HOME/.vimrc
 ln -sf $BASE/vim/ $HOME/.vim
 
