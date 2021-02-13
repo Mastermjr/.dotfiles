@@ -18,9 +18,9 @@ call plug#begin('~/.dotfiles/vim/pack/')
   Plug 'https://github.com/dense-analysis/ale'
 
   "autocomplete
-  "Plug 'ycm-core/YouCompleteMe'
+  Plug 'ycm-core/YouCompleteMe'
 
-  "language
+  "vim compilation and completion
   Plug 'https://github.com/lervag/vimtex'
 
   "snippets
@@ -30,6 +30,8 @@ call plug#begin('~/.dotfiles/vim/pack/')
   "utility
   Plug 'https://github.com/scrooloose/nerdtree'
   Plug 'https://github.com/Konfekt/FastFold'
+
+  "Python folding
   Plug 'https://github.com/tmhedberg/SimpylFold'
 
 call plug#end()
@@ -107,7 +109,7 @@ set viminfo+=n~/.vim/viminfo
 
 "add set list
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
-noremap <F3> Ll :set list!<CR>
+noremap  Ll :set list!<CR>
 
 "folding on syntax
 set foldmethod=syntax
@@ -128,6 +130,14 @@ function! SpellToggle()
 endfunction
 
 nnoremap  zz z=
+
+"kill buffer cleanly
+nnoremap BD :bp<bar>sp<bar>bn<bar>bd<CR>
+
+"security, stops local vimrc from running autocmd
+" don't know if it actually does anything, but stumbled on it
+let secure=1
+
 """""""""""""""""""""""""
 " builtin settings done "
 """""""""""""""""""""""""
@@ -135,8 +145,8 @@ nnoremap  zz z=
 """""""""""""""""""""""
 " completion settings "
 """""""""""""""""""""""
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
 "preview-window functions
 let g:ycm_add_preview_to_completeopt = 1
@@ -146,9 +156,10 @@ let g:ycm_semantic_triggers = {
 \   'python': ['.', '(' ],
 \ }
 
-"function params:
-let g:jedi#show_call_signatures = "0"
-let g:jedi#completions_command = "<C-N>"
+"GoTo:
+nnoremap <silent> [g :YcmCompleter GoTo<cr>
+nnoremap <silent> [d :YcmCompleter GoToDeclaration<cr>
+nnoremap <silent> [r :YcmCompleter GoToReferences<cr>
 
 """""""""""""""""""""""
 " completion settings "
@@ -261,9 +272,9 @@ nnoremap <silent> gG :exec Gitgutter()<CR>
 " Git settings done"
 """"""""""""""""""""
 
-"""""""""""""""""""""""""
-"TODO: floating term settings" 
-"""""""""""""""""""""""""
+""""""""""""""""""""
+"Other App settings" 
+""""""""""""""""""""
 
 " Add your own mapping. For example:
 map <C-h> :NERDTreeToggle<CR>
@@ -276,3 +287,4 @@ let g:tex_fold_enabled = 1
 set t_Co=256  " vim-monokai now only support 256 colours in terminal.
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme monokai
+
