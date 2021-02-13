@@ -11,3 +11,6 @@
 [submodule "texlab"]
 	path = texlab
 	url = https://github.com/latex-lsp/texlab
+[submodule "tmux_plugs/tmux-resurrect"]
+	path = tmux_plugs/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect

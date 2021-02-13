@@ -1,0 +1,44 @@
+#!/bin/bash
+
+name=""
+ext="md"
+
+while getopts "hn::e:" opt; do
+  case ${opt} in
+    n) name=${OPTARG};;
+    e) ext=${OPTARG};;
+    h )
+      echo "Usage: create_note -n \"[NAME]\" -e \"[extension]\" "
+      exit 0
+      ;;
+    \? ) 
+      echo "Usage: create_note -n \"NAME\" [-e \"extension]\" "
+      exit 0
+      ;;
+  esac
+done
+
+  if [ -z "$name" ] ;
+  then
+    echo "name: $name does not exist!"
+    exit 1
+  fi
+  if [  -z "$ext" ] ;
+  then
+    echo "extension: $ext does not exist!"
+    exit 1
+  fi
+
+  d=$(date "+%F")
+  file="$name$d.$ext"
+  read -r -p "create $file (y/n)? " response
+  case "$response" in
+      [yY][eE][sS]|[yY]) 
+          touch $file 
+          echo "# $d:" > $file 
+          ;;
+      [nN][oO]|[nN]) 
+          echo "NOPE"
+          exit 0
+          ;;
+  esac
