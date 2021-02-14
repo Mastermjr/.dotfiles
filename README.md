@@ -8,48 +8,37 @@ Syncing my Dotfiles
   saves to: **.tmux/resurrect/**
 
 ## After Clone:
-**TODO: add in all downloads needed**
-1. ```shell
+1.  Change login shell to zsh
+```shell
 chsh -s /bin/zsh
-``s
-e``
-
-2. ./sync.sh
-
-3. ```shell 
-sudo apt install neovim 
-brew install neovim
 ```
 
+2. Setup files
+```shell
+./sync.sh
+```
 
-4. python3 -m pip install pynvim
+3.  Install binary depends
+```shell 
+sudo apt install -y \
+  vim \
+  tmux 
+``` 
 
-5. coc.nvim:   
-  https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvim
-  - node: brew install node
+4. Install vim packages:
+```
+#launch vim
+:PlugInstall
+```
 
-5. Linters: 
-  - sbt/scalac (apt/brew)
-  ``` shell
-  brew install scala sbt
-  sudo apt install scala sbt
-  ```
-  - pylint,flake8 (python)
-  - vint (in python) (for vim)
-  ``` shell
-  pip3 isntall pylint flake8 vim-vint
-  ```
-  - latex:
-    https://texlab.netlify.com  
-    - node: allready done! 
-    - rust: brew install rust
-    - https://github.com/lervag/vimtex/wiki/introduction#neovim
-    - pip3 install --user neovim-remote
+5. Autocomplete: 
+#TODO: make notes for youcompleteme
+
 
 #sMAC:
-emap cmd to ctrl-a: https://superuser.com/questions/259614/bind-tmux-prefix-to-os-x-cmd-key-or-any-other-binding
-ctrl-a == 0x02
-
+emap cmd to ctrl-a: 
+  - [link](https://superuser.com/questions/259614/bind-tmux-prefix-to-os-x-cmd-key-or-any-other-binding)
+  - ctrl-a == 0x02
 
 ## fun submodule commands:
   `'FolderName' already exists in the index` 
@@ -57,9 +46,6 @@ ctrl-a == 0x02
   git ls-files --stage
 
   git rm -r --cached [file path
-
-## vim load after update/package:
-  :packloadall
 
 ## update submodules
   **forgot --recurse:** git submodule update --init

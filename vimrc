@@ -5,9 +5,8 @@
 "plugin loading vim-plug
 call plug#begin('~/.dotfiles/vim/pack/')
 
-  "git
-  "Plug 'https://github.com/tpope/vim-fugitive.git'
-  "Plug 'airblade/vim-gitgutter'
+  "git in vim native :D
+  Plug 'airblade/vim-gitgutter'
 
   "scheme
   Plug 'vim-airline/vim-airline'
@@ -17,10 +16,11 @@ call plug#begin('~/.dotfiles/vim/pack/')
   Plug 'https://github.com/tpope/vim-surround'
   Plug 'https://github.com/dense-analysis/ale'
 
-  "autocomplete
+  "autocomplete/language
   Plug 'ycm-core/YouCompleteMe'
 
   "vim compilation and completion
+  "optional:
   Plug 'https://github.com/lervag/vimtex'
 
   "snippets
@@ -115,6 +115,7 @@ noremap  Ll :set list!<CR>
 set foldmethod=syntax
 
 " spelling remaps
+" https://vimtricks.com/p/vimtrick-spell-checking-in-vim/
 nnoremap <silent> ss :call SpellToggle()<cr>
 
 let g:NoSpell=1
@@ -129,7 +130,14 @@ function! SpellToggle()
     endif
 endfunction
 
-nnoremap  zz z=
+"spelling shortcuts
+""add a word: zg
+""remove a word: zg
+nnnoremap  zn ]s
+nnoremap  zp [s
+nnoremap  zP [s<esc>z=
+nnoremap  zN ]s<esc>z=
+noremap  zz z=
 
 "kill buffer cleanly
 nnoremap BD :bp<bar>sp<bar>bn<bar>bd<CR>
@@ -152,9 +160,9 @@ let secure=1
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
-let g:ycm_semantic_triggers = {
-\   'python': ['.', '(' ],
-\ }
+"let g:ycm_semantic_triggers = {
+"\   'python': ['.', '(' ],
+"\ }
 
 "GoTo:
 nnoremap <silent> [g :YcmCompleter GoTo<cr>
@@ -272,9 +280,15 @@ nnoremap <silent> gG :exec Gitgutter()<CR>
 " Git settings done"
 """"""""""""""""""""
 
+<<<<<<< Updated upstream
 """"""""""""""""""""
 "Other App settings" 
 """"""""""""""""""""
+=======
+"""""""""""""""""""""""""
+"Misc small settings" 
+"""""""""""""""""""""""""
+>>>>>>> Stashed changes
 
 " Add your own mapping. For example:
 map <C-h> :NERDTreeToggle<CR>

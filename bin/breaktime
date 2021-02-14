@@ -35,7 +35,7 @@ then
     echo "sleeping seconds $time"
     sleep $time 
     pmset displaysleepnow 
-    osascript -e 'tell app "iTerm" to display dialog "Breaktime is running!" buttons {"OK"} with icon note'
+    osascript -e 'tell app "iTerm" to display dialog "Breaktime is running! Get a stretch or bunion exercise in!" buttons {"OK"} with icon note'
   done
 else
   printf "Please install yad or run on mac"

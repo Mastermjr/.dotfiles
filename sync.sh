@@ -55,12 +55,13 @@ if [ ! -d vim/tmp/ ];
 fi
 
 #nvim config
-if [ ! -d $HOME/.config/nvim/ ];
-  then
-    ln -s $BASE/nvim/ $HOME/.config/nvim/
-  else
-    echo "NVIM DIRECTORY EXISTS"
-fi
+#DONE WITH NVIM
+#if [ ! -d $HOME/.config/nvim/ ];
+#  then
+#    ln -s $BASE/nvim/ $HOME/.config/nvim/
+#  else
+#    echo "NVIM DIRECTORY EXISTS"
+#fi
 
 #update vim-plug
 if [ ! -d vim/pack/ ];
@@ -83,9 +84,7 @@ ln -sf $BASE/zshrc $HOME/.zshrc
 
 #tmux
 ln -sf $BASE/tmux.conf $HOME/.tmux.conf
-
-#rust
-
+ln -sf $BASE/tmux $HOME/.tmux
 
 #GO dir setups
 if [ ! -d "${GOPATH}" ];
