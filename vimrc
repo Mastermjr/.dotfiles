@@ -133,7 +133,7 @@ endfunction
 "spelling shortcuts
 ""add a word: zg
 ""remove a word: zg
-nnnoremap  zn ]s
+nnoremap  zn ]s
 nnoremap  zp [s
 nnoremap  zP [s<esc>z=
 nnoremap  zN ]s<esc>z=
@@ -280,15 +280,9 @@ nnoremap <silent> gG :exec Gitgutter()<CR>
 " Git settings done"
 """"""""""""""""""""
 
-<<<<<<< Updated upstream
-""""""""""""""""""""
-"Other App settings" 
-""""""""""""""""""""
-=======
 """""""""""""""""""""""""
 "Misc small settings" 
 """""""""""""""""""""""""
->>>>>>> Stashed changes
 
 " Add your own mapping. For example:
 map <C-h> :NERDTreeToggle<CR>
