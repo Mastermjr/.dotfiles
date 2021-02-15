@@ -1,0 +1,12 @@
+echo "reseting keyboard and normal caps/esc"
+read -r -p "Are you sure? [y/N] " response
+case "$response" in
+    [yY][eE][sS]|[yY])
+        echo "reset!"
+        setxkbmap -layout us -option
+        ;;
+    [nN][oO]|[nN])
+        exit 0
+        ;;
+esac
+

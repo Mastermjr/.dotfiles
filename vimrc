@@ -34,6 +34,11 @@ call plug#begin('~/.dotfiles/vim/pack/')
   "Python folding
   Plug 'https://github.com/tmhedberg/SimpylFold'
 
+  "Theme:
+  "TODO: evaluate 
+  Plug 'crusoexia/vim-monokai'
+  "Plug 'tomasr/molokai'
+
 call plug#end()
 
 "update helptags
@@ -48,7 +53,7 @@ call plug#helptags()
 """""""""""""""""""
 
 "fix background issue
-set background=dark
+"set background=dark
 
 "backup and undo!
 if has('vms')
@@ -295,4 +300,3 @@ let g:tex_fold_enabled = 1
 set t_Co=256  " vim-monokai now only support 256 colours in terminal.
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme monokai
-

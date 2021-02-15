@@ -32,11 +32,9 @@ sudo apt install -y \
 ```
 
 5. Autocomplete: 
-#TODO: make notes for youcompleteme
+  **TODO: make notes for youcompleteme**
 
-
-#sMAC:
-emap cmd to ctrl-a: 
+##MAC: emap cmd to ctrl-a: 
   - [link](https://superuser.com/questions/259614/bind-tmux-prefix-to-os-x-cmd-key-or-any-other-binding)
   - ctrl-a == 0x02
 

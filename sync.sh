@@ -31,10 +31,13 @@ if [ ! -d ./linux_sync ];
   touch ./linux_sync/local_alias
 fi
 
-#vim
-#TODO: switches on linux: target, link_name 
-ln -sf $BASE/vimrc $HOME/.vimrc
-ln -sf $BASE/vim/ $HOME/.vim
+# vim
+# switches on linux: target, link_name 
+if [ ! -d ~/.vim ]
+then
+  ln -sf $BASE/vimrc $HOME/.vimrc
+  ln -sf $BASE/vim/ $HOME/.vim
+fi
 
 #make vim dirs
 if [ ! -f $HOME/.viminfo ];
@@ -54,25 +57,18 @@ if [ ! -d vim/tmp/ ];
     mkdir $BASE/vim/tmp/
 fi
 
-#nvim config
-#DONE WITH NVIM
-#if [ ! -d $HOME/.config/nvim/ ];
-#  then
-#    ln -s $BASE/nvim/ $HOME/.config/nvim/
-#  else
-#    echo "NVIM DIRECTORY EXISTS"
-#fi
 
 #update vim-plug
-if [ ! -d vim/pack/ ];
-  then
-    mkdir $BASE/vim/pack/
-    #generate helptags and install plugins
-    nvim --headless +PlugInstall +q +q
-  else
-  nvim --headless +PlugUpgrade +q +q
-  nvim --headless +PlugUpdate +q +q
-fi
+#TODO: update to vim
+#if [ ! -d vim/pack/ ];
+#  then
+#    mkdir $BASE/vim/pack/
+#    #generate helptags and install plugins
+#    nvim --headless +PlugInstall +q +q
+#  else
+#  nvim --headless +PlugUpgrade +q +q
+#  nvim --headless +PlugUpdate +q +q
+#fi
 
 #zsh
 if [ ! -d $BASE/linux_sync/bin/ ];
@@ -83,14 +79,12 @@ fi
 ln -sf $BASE/zshrc $HOME/.zshrc
 
 #tmux
-ln -sf $BASE/tmux.conf $HOME/.tmux.conf
-ln -sf $BASE/tmux $HOME/.tmux
-
-#GO dir setups
-if [ ! -d "${GOPATH}" ];
+if [ ! -d ~/.tmux ];
 then
-  mkdir "${GOPATH}"
+  mkdir $BASE/tmux
+  ln -sf $BASE/tmux $HOME/.tmux
 fi
+ln -sf $BASE/tmux.conf $HOME/.tmux.conf
 
 #submodules update
 git submodule foreach git checkout master; git pull origin master;
