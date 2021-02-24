@@ -24,8 +24,8 @@ call plug#begin('~/.dotfiles/vim/pack/')
   Plug 'https://github.com/lervag/vimtex'
 
   "snippets
-  Plug 'SirVer/ultisnips'
-  Plug 'honza/vim-snippets'
+  "Plug 'SirVer/ultisnips'
+  "Plug 'honza/vim-snippets'
 
   "utility
   Plug 'https://github.com/scrooloose/nerdtree'
