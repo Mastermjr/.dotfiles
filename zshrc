@@ -38,6 +38,7 @@ if [ $LINUX ]
 then
   add_to_path $HOME/.local/bin/
   add_to_path $HOME/go/bin/
+  setxkbmap -option caps:swapescape
 fi
 
 

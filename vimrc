@@ -22,6 +22,8 @@ call plug#begin('~/.dotfiles/vim/pack/')
   "vim compilation and completion
   "optional:
   Plug 'https://github.com/lervag/vimtex'
+  Plug 'https://github.com/lervag/vimtex'
+  Plug 'https://github.com/nathangrigg/vim-beancount'
 
   "snippets
   "Plug 'SirVer/ultisnips'
@@ -35,7 +37,6 @@ call plug#begin('~/.dotfiles/vim/pack/')
   Plug 'https://github.com/tmhedberg/SimpylFold'
 
   "Theme:
-  "TODO: evaluate 
   Plug 'crusoexia/vim-monokai'
   "Plug 'tomasr/molokai'
 

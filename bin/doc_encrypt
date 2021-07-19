@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+import fire
+import os
+
+def _prompt(question):
+    while "the answer is invalid":
+        reply = str(input(question+'? (y/n): ')).lower().strip()
+        if reply[0] == 'y':
+            return True
+        if reply[0] == 'n':
+            return False
+
+def encrypt(out, *_in):
+    """
+    encrypts all files in the _in list into the out file
+
+    Parameters
+    ----------
+    out : string
+        encrypted file name
+
+    _in  : list
+        list of file(s) 
+
+        use  - to seperate the out_file 
+    """
+    _in = ' '.join(_in)
+    _prompt("encrypting {} -> {}".format(_in, out))
+    inp = "tar -czf - {} | openssl enc -e -pbkdf2 -salt -aes256 -out {}".format(_in, out)
+    os.system(inp)
+
+def decrypt(_in, out):
+    """
+    decrypts _in file into the out directory 
+
+    Parameters
+    ----------
+    _in  : string
+        decrypt file name 
+
+    out : string
+        output directory
+    """
+    _prompt("decrypting {} -> {}".format(_in, out))
+    inp = "openssl enc -d -pbkdf2 -salt -aes256 -in {} | tar xz -C {}".format(_in, out)
+    os.system(inp)
+    
+if __name__ == '__main__':
+  fire.Fire()
+

@@ -32,7 +32,16 @@ sudo apt install -y \
 ```
 
 5. Autocomplete: 
-  **TODO: make notes for youcompleteme**
+#### Linux: 
+[Link](https://github.com/ycm-core/YouCompleteMe#linux-64-bit)
+Steps:
+  1. sudo apt install build-essential cmake vim-nox python3-dev
+  2. `cd ~/.dotfiles/vim/pack/YouCompleteMe`
+  3. git submodule update --init --recursive
+  4. ./install.py --clang-completer
+     
+#### MAC:
+**TODO:**
 
 ##MAC: emap cmd to ctrl-a: 
   - [link](https://superuser.com/questions/259614/bind-tmux-prefix-to-os-x-cmd-key-or-any-other-binding)
